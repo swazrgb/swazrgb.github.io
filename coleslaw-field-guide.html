@@ -1,0 +1,2069 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Coleslaw Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF1EA; --surface:#FBFCF8; --ink:#1C241D; --muted:#58665B; --line:#D3DACF;
+  --accent:#3B7334; --accent-soft:#DDE9D6; --ura:#6C5A2E; --ura-soft:#EFE7D2;
+  --code-bg:#E4E9DF;
+  --display:"Alegreya SC", "Palatino Linotype", Georgia, serif;
+  --body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111612; --surface:#18201A; --ink:#E2E9DF; --muted:#98A69A; --line:#2C372E;
+    --accent:#86C57A; --accent-soft:#233323; --ura:#D2B679; --ura-soft:#2F2A1C;
+    --code-bg:#212B23; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111612; --surface:#18201A; --ink:#E2E9DF; --muted:#98A69A; --line:#2C372E;
+  --accent:#86C57A; --accent-soft:#233323; --ura:#D2B679; --ura-soft:#2F2A1C;
+  --code-bg:#212B23; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);margin:0}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+code{font:0.84em var(--mono);background:var(--code-bg);padding:0.1em 0.35em;border-radius:4px}
+.wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:28px 64px}
+/* sidebar */
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;max-height:calc(100vh - 40px);overflow:auto;padding-right:6px}
+.brand{display:block;text-decoration:none;color:var(--ink);margin-bottom:14px}
+.brand b{font:700 1.5rem/1.1 var(--display);letter-spacing:0.02em;display:block}
+.brand span{font-size:0.85rem;color:var(--muted)}
+.search{width:100%;font:inherit;font-size:0.95rem;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);margin-bottom:14px}
+.navgroup{margin-bottom:14px}
+.navcat{font:500 0.78rem var(--display);letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.navgroup ul{list-style:none;margin:0;padding:0}
+.navgroup a{display:block;padding:3px 8px;border-radius:5px;text-decoration:none;color:var(--ink);font-size:0.95rem;line-height:1.35}
+.navgroup a:hover{background:var(--accent-soft)}
+.navgroup a.on{background:var(--accent);color:var(--surface)}
+.mobnav{display:none}
+/* main */
+main{min-width:0}
+.page{max-width:74ch}
+.crumb{font-size:0.88rem;color:var(--muted);margin:0 0 4px}
+.crumb a{color:var(--muted)}
+h1{font:700 2.3rem/1.15 var(--display);margin:0 0 6px;text-wrap:balance;letter-spacing:0.01em}
+.lede{font-size:1.15rem;color:var(--muted);margin:0 0 20px}
+.prose h3{font:700 1.25rem/1.3 var(--display);margin:28px 0 8px;text-wrap:balance}
+.prose p,.prose ul,.prose ol{margin:0 0 12px}
+.prose li{margin-bottom:4px}
+.tw{overflow-x:auto;margin:6px 0 16px}
+table{border-collapse:collapse;font-size:0.93rem;font-variant-numeric:tabular-nums}
+.prose table{min-width:100%}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.04em;border-bottom-width:2px}
+/* config block */
+.conf{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow-x:auto;margin:0 0 22px}
+.conf table{width:100%}
+.conf th{background:var(--code-bg)}
+.conf td code{background:none;padding:0}
+.conf tr:last-child td{border-bottom:0}
+.vc,.vu{font:500 0.85rem var(--mono);white-space:nowrap}
+.vc{color:var(--accent)} .vu{color:var(--ura)}
+.conf td.note{color:var(--muted);font-style:italic}
+.src{margin-top:30px;padding-top:10px;border-top:1px solid var(--line);font:0.78rem/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.src span{font:700 0.72rem var(--body);text-transform:uppercase;letter-spacing:0.08em;margin-right:6px}
+/* home */
+.hero h1{font-size:2.8rem}
+.levers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0 34px}
+.lever{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.lever code{display:block;background:none;padding:0;margin-bottom:6px;color:var(--accent);font-size:0.82rem}
+.lever p{margin:0;font-size:0.95rem}
+.cat{margin-bottom:30px}
+.cat h2{font:700 1.45rem/1.2 var(--display);margin:0 0 2px}
+.catblurb{color:var(--muted);margin:0 0 10px}
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.cards a{display:flex;flex-direction:column;gap:2px;height:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink);background:var(--surface)}
+.cards a:hover{border-color:var(--accent)}
+.ct{font-weight:700;color:var(--accent)}
+.cs{font-size:0.9rem;color:var(--muted);line-height:1.4}
+.legend{font-size:0.92rem;color:var(--muted)}
+.legend .vc,.legend .vu{font-size:0.82rem}
+@media (max-width:820px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:18px;padding-inline:16px;padding-block:16px 48px}
+  .side{display:none}
+  .mobnav{display:block;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .mobnav summary{cursor:pointer;font:700 1.1rem var(--display)}
+  .mobnav .navwrap{margin-top:10px}
+  h1{font-size:1.9rem}.hero h1{font-size:2.2rem}
+}
+@media (prefers-reduced-motion:no-preference){.cards a{transition:border-color .15s}}
+</style>
+
+<div class="wrap">
+  <aside class="side" aria-label="Wiki pages">
+    <a class="brand" href="#home"><b>Coleslaw Field Guide</b><span>What Coleslaw has that Uranium doesn't</span></a>
+    <input class="search" id="q" type="search" placeholder="Filter 50 pages" aria-label="Filter pages">
+    <nav id="nav"><div class="navgroup"><div class="navcat">Quests &amp; minigames</div><ul><li><a href="#rune-mysteries" data-id="rune-mysteries">Rune Mysteries</a></li><li><a href="#peeling-the-onion" data-id="peeling-the-onion">Peeling the Onion</a></li><li><a href="#combat-odyssey" data-id="combat-odyssey">Combat Odyssey</a></li><li><a href="#dwarf-rescue" data-id="dwarf-rescue">Dwarf Rescue</a></li><li><a href="#mums-assistant" data-id="mums-assistant">Mum&#x27;s Assistant</a></li><li><a href="#death-island" data-id="death-island">Death Island</a></li><li><a href="#skillcapes" data-id="skillcapes">Skillcapes</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Skills</div><ul><li><a href="#runecraft" data-id="runecraft">Runecraft</a></li><li><a href="#harvesting" data-id="harvesting">Harvesting</a></li><li><a href="#wc-guild" data-id="wc-guild">Woodcutting Guild</a></li><li><a href="#firemaking" data-id="firemaking">Burn any log</a></li><li><a href="#leather" data-id="leather">Leather tanning and new leather</a></li><li><a href="#cooking" data-id="cooking">New cooking recipes</a></li><li><a href="#potions" data-id="potions">New potions and decanting</a></li><li><a href="#smithing-extras" data-id="smithing-extras">Chainmail legs and more arrow shafts</a></li><li><a href="#crowns" data-id="crowns">Crowns and enchanted crowns</a></li><li><a href="#rings" data-id="rings">Enchanted rings</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Items &amp; drops</div><ul><li><a href="#bonecrusher" data-id="bonecrusher">Bonecrusher</a></li><li><a href="#dragon-gear" data-id="dragon-gear">Dragon gear</a></li><li><a href="#drop-tables" data-id="drop-tables">Drop tables and kill tracking</a></li><li><a href="#ironman" data-id="ironman">Ironman modes</a></li><li><a href="#certs" data-id="certs">New certificates</a></li><li><a href="#not-obtainable" data-id="not-obtainable">Items you can&#x27;t get</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Economy &amp; world</div><ul><li><a href="#auction-house" data-id="auction-house">Auction house</a></li><li><a href="#banking" data-id="banking">Banking upgrades</a></li><li><a href="#clans-parties" data-id="clans-parties">Clans and parties</a></li><li><a href="#new-npcs" data-id="new-npcs">New NPCs</a></li><li><a href="#shortcuts" data-id="shortcuts">Shortcuts, travel and bank chests</a></li><li><a href="#custom-map" data-id="custom-map">Custom landscape</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Game rules</div><ul><li><a href="#batching" data-id="batching">Batching</a></li><li><a href="#mining-extended" data-id="mining-extended">Extended mining rocks</a></li><li><a href="#fishing-depletion" data-id="fishing-depletion">Depleting fishing spots</a></li><li><a href="#fatigue" data-id="fatigue">No fatigue</a></li><li><a href="#xp-rates" data-id="xp-rates">2× experience</a></li><li><a href="#tick-speed" data-id="tick-speed">Faster game tick</a></li><li><a href="#npc-respawn" data-id="npc-respawn">Faster NPC respawn</a></li><li><a href="#npc-blocking" data-id="npc-blocking">NPCs don&#x27;t block</a></li><li><a href="#npc-retreat" data-id="npc-retreat">NPCs don&#x27;t retreat</a></li><li><a href="#poison-npcs" data-id="poison-npcs">Poisonable NPCs</a></li><li><a href="#pvp-distance" data-id="pvp-distance">Longer PvP catch range</a></li><li><a href="#xp-cap" data-id="xp-cap">XP cap</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Quest tweaks</div><ul><li><a href="#quest-regions" data-id="quest-regions">Post-quest areas stay open</a></li><li><a href="#quest-items" data-id="quest-items">Replace lost quest items</a></li><li><a href="#small-quest-tweaks" data-id="small-quest-tweaks">Smaller quest shortcuts</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Interface</div><ul><li><a href="#equipment-tab" data-id="equipment-tab">Equipment tab</a></li><li><a href="#xp-display" data-id="xp-display">XP drops, counter and totals</a></li><li><a href="#guides" data-id="guides">Skill and quest guides</a></li><li><a href="#client-view" data-id="client-view">View settings</a></li><li><a href="#client-hud" data-id="client-hud">HUD and menus</a></li><li><a href="#client-misc" data-id="client-misc">Other client changes</a></li></ul></div></nav>
+  </aside>
+  <main>
+    <details class="mobnav"><summary>Coleslaw Field Guide: all pages</summary><div class="navwrap"><div class="navgroup"><div class="navcat">Quests &amp; minigames</div><ul><li><a href="#rune-mysteries" data-id="rune-mysteries">Rune Mysteries</a></li><li><a href="#peeling-the-onion" data-id="peeling-the-onion">Peeling the Onion</a></li><li><a href="#combat-odyssey" data-id="combat-odyssey">Combat Odyssey</a></li><li><a href="#dwarf-rescue" data-id="dwarf-rescue">Dwarf Rescue</a></li><li><a href="#mums-assistant" data-id="mums-assistant">Mum&#x27;s Assistant</a></li><li><a href="#death-island" data-id="death-island">Death Island</a></li><li><a href="#skillcapes" data-id="skillcapes">Skillcapes</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Skills</div><ul><li><a href="#runecraft" data-id="runecraft">Runecraft</a></li><li><a href="#harvesting" data-id="harvesting">Harvesting</a></li><li><a href="#wc-guild" data-id="wc-guild">Woodcutting Guild</a></li><li><a href="#firemaking" data-id="firemaking">Burn any log</a></li><li><a href="#leather" data-id="leather">Leather tanning and new leather</a></li><li><a href="#cooking" data-id="cooking">New cooking recipes</a></li><li><a href="#potions" data-id="potions">New potions and decanting</a></li><li><a href="#smithing-extras" data-id="smithing-extras">Chainmail legs and more arrow shafts</a></li><li><a href="#crowns" data-id="crowns">Crowns and enchanted crowns</a></li><li><a href="#rings" data-id="rings">Enchanted rings</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Items &amp; drops</div><ul><li><a href="#bonecrusher" data-id="bonecrusher">Bonecrusher</a></li><li><a href="#dragon-gear" data-id="dragon-gear">Dragon gear</a></li><li><a href="#drop-tables" data-id="drop-tables">Drop tables and kill tracking</a></li><li><a href="#ironman" data-id="ironman">Ironman modes</a></li><li><a href="#certs" data-id="certs">New certificates</a></li><li><a href="#not-obtainable" data-id="not-obtainable">Items you can&#x27;t get</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Economy &amp; world</div><ul><li><a href="#auction-house" data-id="auction-house">Auction house</a></li><li><a href="#banking" data-id="banking">Banking upgrades</a></li><li><a href="#clans-parties" data-id="clans-parties">Clans and parties</a></li><li><a href="#new-npcs" data-id="new-npcs">New NPCs</a></li><li><a href="#shortcuts" data-id="shortcuts">Shortcuts, travel and bank chests</a></li><li><a href="#custom-map" data-id="custom-map">Custom landscape</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Game rules</div><ul><li><a href="#batching" data-id="batching">Batching</a></li><li><a href="#mining-extended" data-id="mining-extended">Extended mining rocks</a></li><li><a href="#fishing-depletion" data-id="fishing-depletion">Depleting fishing spots</a></li><li><a href="#fatigue" data-id="fatigue">No fatigue</a></li><li><a href="#xp-rates" data-id="xp-rates">2× experience</a></li><li><a href="#tick-speed" data-id="tick-speed">Faster game tick</a></li><li><a href="#npc-respawn" data-id="npc-respawn">Faster NPC respawn</a></li><li><a href="#npc-blocking" data-id="npc-blocking">NPCs don&#x27;t block</a></li><li><a href="#npc-retreat" data-id="npc-retreat">NPCs don&#x27;t retreat</a></li><li><a href="#poison-npcs" data-id="poison-npcs">Poisonable NPCs</a></li><li><a href="#pvp-distance" data-id="pvp-distance">Longer PvP catch range</a></li><li><a href="#xp-cap" data-id="xp-cap">XP cap</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Quest tweaks</div><ul><li><a href="#quest-regions" data-id="quest-regions">Post-quest areas stay open</a></li><li><a href="#quest-items" data-id="quest-items">Replace lost quest items</a></li><li><a href="#small-quest-tweaks" data-id="small-quest-tweaks">Smaller quest shortcuts</a></li></ul></div>
+<div class="navgroup"><div class="navcat">Interface</div><ul><li><a href="#equipment-tab" data-id="equipment-tab">Equipment tab</a></li><li><a href="#xp-display" data-id="xp-display">XP drops, counter and totals</a></li><li><a href="#guides" data-id="guides">Skill and quest guides</a></li><li><a href="#client-view" data-id="client-view">View settings</a></li><li><a href="#client-hud" data-id="client-hud">HUD and menus</a></li><li><a href="#client-misc" data-id="client-misc">Other client changes</a></li></ul></div></div></details>
+
+    <article id="home" class="page hero">
+      <p class="crumb">Wiki</p>
+      <h1>Coleslaw vs Uranium</h1>
+      <p class="lede">Both worlds run the same OpenRSC server. Uranium is configured to play like authentic RSC; Coleslaw switches on the custom content. Each page below covers one difference: what it does, where to find it, the numbers, and why you'd care.</p>
+      <p>Almost everything comes from three kinds of setting:</p>
+      <div class="levers">
+        <div class="lever"><code>location_data: 2 / 1</code><p>Loads the extra spawn files: auction clerks, runecraft altars, harvest patches, custom quest NPCs, shortcuts.</p></div>
+        <div class="lever"><code>restrict_item_id: -1 / 1289</code><p>Uranium refuses every item above ID 1289, so all 303 custom items (and scenery above 1188) can't exist there.</p></div>
+        <div class="lever"><code>~80 feature flags</code><p>Everything from batching and 2× XP to the equipment tab and hidden roofs.</p></div>
+      </div>
+      <p class="legend">Every page starts with its settings: <span class="vc">Coleslaw value</span> then <span class="vu">Uranium value</span>. Facts come from reading the server code; anything I couldn't confirm is marked <em>unverified</em>. XP figures are the displayed amounts before Coleslaw's 2× rate unless a page says otherwise.</p>
+      <section class="cat"><h2>Quests &amp; minigames</h2><p class="catblurb">Two new quests, the Combat Odyssey, miniquests and skillcapes.</p><ul class="cards"><li><a href="#rune-mysteries"><span class="ct">Rune Mysteries</span><span class="cs">Short members quest that unlocks Runecraft.</span></a></li><li><a href="#peeling-the-onion"><span class="ct">Peeling the Onion</span><span class="cs">Free quest: become an ogre to help Kresh. Cooking and Crafting XP.</span></a></li><li><a href="#combat-odyssey"><span class="ct">Combat Odyssey</span><span class="cs">A 40,000-kill slayer-style journey ending in dragon legs.</span></a></li><li><a href="#dwarf-rescue"><span class="ct">Dwarf Rescue</span><span class="cs">Save a dwarf&#x27;s son from a Balrog; unlocks dragon smithing.</span></a></li><li><a href="#mums-assistant"><span class="ct">Mum&#x27;s Assistant</span><span class="cs">Make Mum a pizza bagel; afterwards she feeds you forever.</span></a></li><li><a href="#death-island"><span class="ct">Death Island</span><span class="cs">Death&#x27;s pumpkin farm; loaded, but new players can&#x27;t get there.</span></a></li><li><a href="#skillcapes"><span class="ct">Skillcapes</span><span class="cs">99,000 gp capes at level 99, each with a perk.</span></a></li></ul></section>
+<section class="cat"><h2>Skills</h2><p class="catblurb">Runecraft, Harvesting, and extensions to existing skills.</p><ul class="cards"><li><a href="#runecraft"><span class="ct">Runecraft</span><span class="cs">A new skill: mine rune stones, bind them into runes at hidden altars.</span></a></li><li><a href="#harvesting"><span class="ct">Harvesting</span><span class="cs">A gathering skill for fruit, vegetables, herbs and other farm produce.</span></a></li><li><a href="#wc-guild"><span class="ct">Woodcutting Guild</span><span class="cs">Yews and magic trees next to a bank chest, in McGrubor&#x27;s Wood.</span></a></li><li><a href="#firemaking"><span class="ct">Burn any log</span><span class="cs">Oak, willow, maple, yew and magic logs can be lit, with a fixed XP per log.</span></a></li><li><a href="#leather"><span class="ct">Leather tanning and new leather</span><span class="cs">Tan hides yourself over a fire; craft chaps, a top and a skirt.</span></a></li><li><a href="#cooking"><span class="ct">New cooking recipes</span><span class="cs">Seaweed soup, pumpkin pies and lean meats.</span></a></li><li><a href="#potions"><span class="ct">New potions and decanting</span><span class="cs">Six new potions, and merging doses.</span></a></li><li><a href="#smithing-extras"><span class="ct">Chainmail legs and more arrow shafts</span><span class="cs">New anvil items and better fletching from better logs.</span></a></li><li><a href="#crowns"><span class="ct">Crowns and enchanted crowns</span><span class="cs">Craft gem crowns and enchant them into skilling helpers.</span></a></li><li><a href="#rings"><span class="ct">Enchanted rings</span><span class="cs">Recoil, splendor, forging, life, wealth, avarice and dwarven rings.</span></a></li></ul></section>
+<section class="cat"><h2>Items &amp; drops</h2><p class="catblurb">Custom items, dragon gear, drop tables and ironman modes.</p><ul class="cards"><li><a href="#bonecrusher"><span class="ct">Bonecrusher</span><span class="cs">Not an auto-burier: you feed it bones by hand for half XP.</span></a></li><li><a href="#dragon-gear"><span class="ct">Dragon gear</span><span class="cs">Dragon weapons and armour, and which pieces you can actually get.</span></a></li><li><a href="#drop-tables"><span class="ct">Drop tables and kill tracking</span><span class="cs">The KBD bonus table, the pity timer, drop alerts and kill counts.</span></a></li><li><a href="#ironman"><span class="ct">Ironman modes</span><span class="cs">Ironman, Ultimate and Hardcore accounts, their armour and rules.</span></a></li><li><a href="#certs"><span class="ct">New certificates</span><span class="cs">Mortimer and Randolph cert rune stones, potions and high-level fish.</span></a></li><li><a href="#not-obtainable"><span class="ct">Items you can&#x27;t get</span><span class="cs">Custom items that exist but have no source on Coleslaw.</span></a></li></ul></section>
+<section class="cat"><h2>Economy &amp; world</h2><p class="catblurb">Auction house, social systems, new NPCs, shortcuts and map changes.</p><ul class="cards"><li><a href="#auction-house"><span class="ct">Auction house</span><span class="cs">List items for sale; buyers pay while you&#x27;re offline, and you collect at any bank.</span></a></li><li><a href="#banking"><span class="ct">Banking upgrades</span><span class="cs">Huge bank, presets, notes, PINs, cert deposits and quick-bank options.</span></a></li><li><a href="#clans-parties"><span class="ct">Clans and parties</span><span class="cs">Group chat, clan tags, a 5-player party panel and loot sharing.</span></a></li><li><a href="#new-npcs"><span class="ct">New NPCs</span><span class="cs">Peter Skippin, Silicius, the Brimhaven cart and other additions.</span></a></li><li><a href="#shortcuts"><span class="ct">Shortcuts, travel and bank chests</span><span class="cs">New agility shortcuts, a rowboat, a Wilderness tunnel and free bank chests.</span></a></li><li><a href="#custom-map"><span class="ct">Custom landscape</span><span class="cs">Map edits for the altars, Death Island, an expansion forest and dungeons.</span></a></li></ul></section>
+<section class="cat"><h2>Game rules</h2><p class="catblurb">Batching, tick speed, XP rates and how NPCs behave.</p><ul class="cards"><li><a href="#batching"><span class="ct">Batching</span><span class="cs">One click repeats a skilling action until the batch is done.</span></a></li><li><a href="#mining-extended"><span class="ct">Extended mining rocks</span><span class="cs">A rock gives several ores before it empties.</span></a></li><li><a href="#fishing-depletion"><span class="ct">Depleting fishing spots</span><span class="cs">Fishing spots occasionally turn to rock and move your batch on.</span></a></li><li><a href="#fatigue"><span class="ct">No fatigue</span><span class="cs">No fatigue bar, no sleeping; beds become an XP on/off switch.</span></a></li><li><a href="#xp-rates"><span class="ct">2× experience</span><span class="cs">Double XP for combat and skills, including quest rewards.</span></a></li><li><a href="#tick-speed"><span class="ct">Faster game tick</span><span class="cs">430 ms ticks instead of 640 ms: the whole world runs about 1.5× faster.</span></a></li><li><a href="#npc-respawn"><span class="ct">Faster NPC respawn</span><span class="cs">NPCs come back in 0.7× the ticks, about half the real time.</span></a></li><li><a href="#npc-blocking"><span class="ct">NPCs don&#x27;t block</span><span class="cs">Walk through any NPC, and take items from under it.</span></a></li><li><a href="#npc-retreat"><span class="ct">NPCs don&#x27;t retreat</span><span class="cs">Monsters fight to the death instead of running at low health.</span></a></li><li><a href="#poison-npcs"><span class="ct">Poisonable NPCs</span><span class="cs">Poisoned weapons and ammo now poison monsters too.</span></a></li><li><a href="#pvp-distance"><span class="ct">Longer PvP catch range</span><span class="cs">Melee can chase a moving player from 3 tiles instead of 2.</span></a></li><li><a href="#xp-cap"><span class="ct">XP cap</span><span class="cs">Skills cap at 1 billion XP instead of overflowing.</span></a></li></ul></section>
+<section class="cat"><h2>Quest tweaks</h2><p class="catblurb">Small fixes and conveniences in existing quests and skills.</p><ul class="cards"><li><a href="#quest-regions"><span class="ct">Post-quest areas stay open</span><span class="cs">Areas that lock after a quest stay reachable.</span></a></li><li><a href="#quest-items"><span class="ct">Replace lost quest items</span><span class="cs">Get a lost doctor&#x27;s gown, translation book or gauntlets back.</span></a></li><li><a href="#small-quest-tweaks"><span class="ct">Smaller quest shortcuts</span><span class="cs">Wormbrain, Yohnus, the Apothecary, webs, pure water and more.</span></a></li></ul></section>
+<section class="cat"><h2>Interface</h2><p class="catblurb">Client features the custom world turns on.</p><ul class="cards"><li><a href="#equipment-tab"><span class="ct">Equipment tab</span><span class="cs">Worn items leave your inventory and free up slots.</span></a></li><li><a href="#xp-display"><span class="ct">XP drops, counter and totals</span><span class="cs">Floating XP numbers, an XP tracker and total XP on the stats tab.</span></a></li><li><a href="#guides"><span class="ct">Skill and quest guides</span><span class="cs">Click a skill or quest to see unlocks, requirements and rewards.</span></a></li><li><a href="#client-view"><span class="ct">View settings</span><span class="cs">Hide roofs, push back fog, stop dungeon flicker, filter ground items.</span></a></li><li><a href="#client-hud"><span class="ct">HUD and menus</span><span class="cs">Overlay, inventory count, nametags, combat style menu, number keys.</span></a></li><li><a href="#client-misc"><span class="ct">Other client changes</span><span class="cs">Herb names, kept-on-death preview, chat fixes, custom sprites.</span></a></li></ul></section>
+    </article>
+
+    <article id="rune-mysteries" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Rune Mysteries</h1><p class="lede">Short members quest that unlocks Runecraft.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_custom_quests</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_runecraft</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p><strong>Start:</strong> the Duke of Lumbridge, upstairs in Lumbridge Castle. <strong>Requirements:</strong> none, just a free inventory slot.</p>
+<ol>
+<li>The Duke gives you an <strong>Air talisman</strong>.</li>
+<li>Take it to <strong>Wizard Sedridor</strong> in the Wizards' Tower basement ("I'm looking for the head wizard"). He swaps it for a <strong>Research package</strong>.</li>
+<li>Give the package to <strong>Aubury</strong> in Varrock. He gives you <strong>Research notes</strong> and offers a free teleport back to the Wizards' Tower.</li>
+<li>Give the notes to Sedridor. He hands the Air talisman back and the quest completes.</li>
+</ol>
+<p>If you lose the package or notes, the NPCs give you another.</p>
+<h3>Rewards</h3>
+<ul>
+<li>1 quest point (no XP)</li>
+<li>the Air talisman</li>
+<li>access to <a href="#runecraft">Runecraft</a></li>
+<li>Sedridor and Aubury will now teleport you to the rune stone mine</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>It is the only way into Runecraft, and it takes a few minutes with no items needed.</p></div><p class="src"><span>Source</span> custom/quests/members/RuneMysteries.java · Sedridor.java · QuestRewardRegistrar.java:414</p></article>
+<article id="peeling-the-onion" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Peeling the Onion</h1><p class="lede">Free quest: become an ogre to help Kresh. Cooking and Crafting XP.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_custom_quests</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p><strong>Start:</strong> Kresh the ogre in his house in Lumbridge Swamp, or Wizard Sedridor ("Do you have anything you need doing?"). <strong>Requirements:</strong> Crafting 5.</p>
+<ol>
+<li>Talk to Kresh and Sedridor. Sedridor suggests making you an ogre; you can say no and come back later.</li>
+<li>Visit the <strong>Make over mage</strong> (north-west of the Crafting Guild). He gives you a free <strong>Makeover Waiver</strong>; read it and sign.</li>
+<li>Back at the mage, he turns you into an ogre. This is a real appearance change: ogre skin, face and hair.</li>
+<li><strong>Aggie</strong> in Draynor makes <strong>Soft Yellowgreen Clay</strong> from 1 soft clay, 4 onions and 1 woad leaf.</li>
+<li>"Shape" the clay into <strong>Ogre Ears</strong> (Crafting 5).</li>
+<li>Use a knife on leather armour to make a <strong>Leather vest</strong>.</li>
+<li><strong>Wear</strong> the ears and vest and talk to Kresh.</li>
+<li>Search the bookcase in the Wizards' Tower basement for the <strong>Ogre recipes</strong> and give them to Kresh.</li>
+</ol>
+<h3>Rewards</h3>
+<ul>
+<li>2 quest points</li>
+<li>Cooking XP of 50 + 25 per Cooking level, and Crafting XP of 50 + 18.75 per Crafting level (doubled by the <a href="#xp-rates">2× rate</a>)</li>
+<li>750 gp from Sedridor</li>
+<li>one free makeover (normally 3,000 gp)</li>
+<li>new skin colours: yellow, zombie, purple and "Kresh green"</li>
+</ul>
+<p>Afterwards Aggie will make replacement clay for 20 gp plus materials.</p>
+<h3>Why it's useful</h3>
+<p>Short, free-to-play, and the XP grows with your level, so doing it late pays more.</p></div><p class="src"><span>Source</span> custom/quests/free/PeelingTheOnion.java · PeelingTheOnionItems/* · QuestRewardRegistrar.java:420</p></article>
+<article id="combat-odyssey" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Combat Odyssey</h1><p class="lede">A 40,000-kill slayer-style journey ending in dragon legs.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_combat_odyssey</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p><strong>Start:</strong> Sir Radimus Erkle in the Legends' Guild, after <strong>Legends' Quest</strong>. Accept, then climb the guild stairs: <strong>Biggum Flodrot</strong>, a goblin, jumps into your backpack as an untradeable item. Talk to him for your current task and what's left. Drop him and he runs off; Radimus gets him back.</p>
+<h3>How it works</h3>
+<ul>
+<li>14 tiers of kill tasks. Each task is a random unfinished one from your tier, and most are <strong>500 kills</strong>.</li>
+<li>Tier totals: 8,170 · 500 · 5,525 · 7,600 · 5,550 · 100 · 5,800 · 500 · 3,550 · 860 · 1,250 · 1,000 · 500 · 1. That's <strong>40,906 kills</strong> altogether.</li>
+<li>When you finish a tier, a "tier master" gives you the next one and a reward. Most masters only do this if you've finished their quest.</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>After tier</th>
+<th>Next tier from</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intro</td>
+<td>General Wartface, Goblin Village (after Goblin Diplomacy)</td>
+<td>–</td>
+</tr>
+<tr>
+<td>0</td>
+<td>General Wartface</td>
+<td>20 stat restore certs, 200 giant carp certs, ruby amulet of strength, medium rune helm</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Thormac (after Scorpion Catcher)</td>
+<td>–</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Grew, Feldip Hills (after Watchtower)</td>
+<td>rune square shield</td>
+</tr>
+<tr>
+<td>3, 4</td>
+<td>Dark Mage, West Ardougne</td>
+<td>rune battle axe + 20 cure poison certs; then 200 blood runes</td>
+</tr>
+<tr>
+<td>5, 6</td>
+<td>Hazelmere (after Grand Tree)</td>
+<td>200 lava eel certs, diamond amulet of power, large rune helm; then 20 antidote certs + rune kiteshield</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Sigbert the Adventurer</td>
+<td>–</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Achetties, Heroes' Guild (after Hero's Quest)</td>
+<td>100 prayer potion certs, charged dragonstone amulet, rune 2-handed sword</td>
+</tr>
+<tr>
+<td>9–12</td>
+<td>Radimus</td>
+<td>at tier 10: 100 manta ray and 100 sea turtle certs, dragonstone ring, 20 each super attack/strength/defense certs</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tier 5 is 100 Battle Mages in the Mage Arena. While the Odyssey is on, attacking one sets your current Attack and Strength to 0, and stat-boosting potions are banned from the arena. The last tier is one King Black Dragon kill.</p>
+<h3>Final reward</h3>
+<p>Your choice of <strong>Dragon plate mail legs</strong> or <strong>Dragon plated skirt</strong>. Then progress resets and you can go again.</p>
+<h3>Why it's useful</h3>
+<p>Kills you'd make anyway count towards a pile of rune gear, supplies and the only dragon legs. It is a very long grind.</p></div><p class="src"><span>Source</span> custom/minigames/CombatOdyssey.java · extras/CombatOdyssey.json · MageArena.java:470-800</p></article>
+<article id="dwarf-rescue" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Dwarf Rescue</h1><p class="lede">Save a dwarf&#x27;s son from a Balrog; unlocks dragon smithing.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_custom_quests</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p><strong>Start:</strong> Gramat, outside the Dwarven Mine. <strong>Requirements:</strong> Dwarf Cannon, Crafting 15, and the ability to kill a level 217 Balrog.</p>
+<ol>
+<li>Go down the new ladder in the Dwarven Mine to the lava area. It only works once you've started.</li>
+<li>Kill the <strong>Balrog</strong> (level 217, aggressive, 500 hits). It always drops the <strong>Teddy head</strong>. The <strong>Teddy body</strong> lies on the ground nearby.</li>
+<li>Talk to the <strong>Dwarven Youth</strong> while holding both halves. He teleports you out.</li>
+<li>Sew them together with needle and thread (Crafting 15) and give the <strong>Teddy</strong> to Gramat. He gives you the <strong>Dwarf Smithy Note</strong>.</li>
+</ol>
+<h3>What it unlocks</h3>
+<p><a href="#dragon-gear">Dragon metal and scale mail</a>: smelting dragon swords and axes on the Lava forge, making dragon chain on the Lava anvil, chipping King Black Dragon scales, and buying Dragon Scale Mail from Wayne's Chains.</p>
+<h3>Why it's useful</h3>
+<p>The only route to Dragon Scale Mail, the best body armour among the custom items.</p></div><p class="src"><span>Source</span> custom/minigames/DwarfRescue.java · Ladders.java:62 · NpcDrops.java:1759</p></article>
+<article id="mums-assistant" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Mum&#x27;s Assistant</h1><p class="lede">Make Mum a pizza bagel; afterwards she feeds you forever.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td colspan="3" class="note">(loads with location_data 2)</td></tr></tbody></table></div><div class="prose"><p><strong>Where:</strong> Mum stands just south of Lumbridge Castle, by Bob's Axes. The Christmas setting being off doesn't matter; it only removes her party copy in the Rising Sun Inn.</p>
+<p><strong>Steps:</strong> say "Hello mother…" and agree, then bring 1 unnoted <strong>cheese</strong>, <strong>tomato</strong> and <strong>pizza base</strong>. She makes you a <strong>Pizza Bagel</strong> and the minigame is done.</p>
+<h3>Reward</h3>
+<p>After that, <strong>a free Pizza Bagel every time you ask</strong>, with no cost or limit. It heals 2 and is tradeable.</p>
+<h3>Why it's useful</h3>
+<p>Unlimited free food next to the Lumbridge spawn. Handy for new accounts.</p></div><p class="src"><span>Source</span> custom/minigames/mumsassistant/Mum.java · WorldPopulator.java:307-323</p></article>
+<article id="death-island" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Death Island</h1><p class="lede">Death&#x27;s pumpkin farm; loaded, but new players can&#x27;t get there.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>death_island</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>Death's farm is loaded on Coleslaw, but the only way in is the <strong>Mice to Meet You</strong> Halloween event, which is off. Every step that advances that event checks the event flag, so a new character can't unlock the island.</p>
+<p>A character that already finished the event can still get there by sleeping in the bed in Death's old Varrock house. On the island, Death sells pumpkin pies for 20,000 gp each.</p>
+<h3>Why it matters</h3>
+<p>It isn't practical content right now.</p></div><p class="src"><span>Source</span> custom/minigames/micetomeetyou/Death.java:507 · Sleeping.java:17</p></article>
+<article id="skillcapes" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quests &amp; minigames</p><h1>Skillcapes</h1><p class="lede">99,000 gp capes at level 99, each with a perk.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>custom_sprites</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>Each cape costs <strong>99,000 coins</strong> from its NPC and needs <strong>base level 99</strong> in the skill. All are untradeable and give +6 armour. Perks only work while worn.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Cape</th>
+<th>Seller</th>
+<th>Perk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attack</td>
+<td>Captain Rovin, Varrock Palace</td>
+<td>A missed melee swing is re-rolled 35% of the time (can repeat)</td>
+</tr>
+<tr>
+<td>Strength</td>
+<td>Achetties, Heroes' Guild</td>
+<td>35% chance of +20% max hit on a strong hit</td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>Sir Vyvin, White Knights' Castle</td>
+<td>35% chance to halve an incoming melee hit; dragonfire −25%</td>
+</tr>
+<tr>
+<td>Hits</td>
+<td>Doctor Orbon</td>
+<td>Food heals +0, +2, +4 or +6 extra</td>
+</tr>
+<tr>
+<td>Ranged</td>
+<td>Lowe, Varrock</td>
+<td>10% "double shot": up to 2× damage, next shot 1 tick later instead of 3</td>
+</tr>
+<tr>
+<td>Prayer</td>
+<td>Brother Jered, Monastery</td>
+<td>+4 prayer bonus; burying bones restores prayer (1, 2 or 4 points)</td>
+</tr>
+<tr>
+<td>Magic</td>
+<td>Wizard Frumscone, Yanille</td>
+<td>10% chance to cast with no runes</td>
+</tr>
+<tr>
+<td>Cooking</td>
+<td>Head Chef, Cooks' Guild</td>
+<td>Cooking is about 30% faster; enter the guild without a chef's hat</td>
+</tr>
+<tr>
+<td>Woodcutting</td>
+<td>Bob, Lumbridge</td>
+<td>35% chance the tree doesn't fall</td>
+</tr>
+<tr>
+<td>Fletching</td>
+<td>Hickton, Catherby</td>
+<td>20% chance to double output and XP when adding arrowheads or making pearl bolts</td>
+</tr>
+<tr>
+<td>Fishing</td>
+<td>Master Fisher, Fishing Guild</td>
+<td>Teleport to the Fishing Guild (10 charges, recharge with raw sharks); Trawler reward ×1.5</td>
+</tr>
+<tr>
+<td>Firemaking</td>
+<td>Candle maker, Catherby</td>
+<td>Fires last 2× as long; "Combust" lights a fire with no logs</td>
+</tr>
+<tr>
+<td>Crafting</td>
+<td>Master Crafter, Crafting Guild</td>
+<td>Unlimited teleport to the Crafting Guild; enter without an apron</td>
+</tr>
+<tr>
+<td>Smithing</td>
+<td>Thurgo</td>
+<td>25% chance to use half the coal when smelting or superheating</td>
+</tr>
+<tr>
+<td>Mining</td>
+<td>Nurmof, Dwarven Mine</td>
+<td>8% chance of an extra ore</td>
+</tr>
+<tr>
+<td>Herblaw</td>
+<td>Kaqemeex, Taverley</td>
+<td>10% chance to keep the herb or secondary</td>
+</tr>
+<tr>
+<td>Agility</td>
+<td>Gunnjorn, Barbarian course</td>
+<td>Teleport to the Yanille agility dungeon; never fail certain stepping stones</td>
+</tr>
+<tr>
+<td>Thieving</td>
+<td>Robin Banks</td>
+<td>A failed pickpocket becomes a success 15% of the time</td>
+</tr>
+<tr>
+<td>Harvesting</td>
+<td>Lily</td>
+<td>20% chance of double yield</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Not obtainable:</strong> the Runecraft, Quest and Max capes exist as items, but no NPC sells them and I found no perk for them.</p>
+<h3>Why it's useful</h3>
+<p>Teleport capes save travel, combat capes add real damage and defence, and skilling capes save resources.</p></div><p class="src"><span>Source</span> SkillCapes.java · CombatFormula.java:166-210 · Equipment.java:653, 729-745 · per-NPC seller files</p></article>
+<article id="runecraft" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Runecraft</h1><p class="lede">A new skill: mine rune stones, bind them into runes at hidden altars.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_runecraft</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>Runecraft is a whole extra skill. You mine <strong>rune stones</strong>, carry them to an <strong>altar</strong> behind a set of Mysterious Ruins, and turn them into runes. XP figures below are displayed XP before the <a href="#xp-rates">2× rate</a>.</p>
+<h3>Unlocking it</h3>
+<p>Complete the <a href="#rune-mysteries">Rune Mysteries</a> quest. Every Runecraft action checks for it.</p>
+<h3>Rune stones</h3>
+<ul>
+<li>After the quest, <strong>Wizard Sedridor</strong> (Wizards' Tower basement) and <strong>Aubury</strong> (Varrock rune shop) can teleport you to the rune stone mine, a separate area in the far north of the map.</li>
+<li>The mine is one <strong>Raw Rune stone</strong> rock that never runs out. Any pickaxe works, there is <strong>no Mining level requirement</strong>, every swing succeeds, and each stone gives 5 Mining XP.</li>
+<li>With <a href="#batching">batching</a>, one click fills your pack at about a stone per tick.</li>
+<li>The exit portal takes you back to whoever sent you.</li>
+<li>Mortimer the <a href="#certs">certer</a> accepts rune stones.</li>
+</ul>
+<h3>Altars</h3>
+<p>Enter the <strong>Mysterious Ruins</strong> with the matching talisman (click Enter, or use the talisman on the ruins). Inside, click <strong>Bind</strong> on the altar: one click converts every rune stone you carry. A talisman's <strong>Locate</strong> option tells you which direction its ruins are.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rune</th>
+<th>Ruins near</th>
+<th>Level</th>
+<th>XP / stone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Air</td>
+<td>South of Falador</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Mind</td>
+<td>North of Falador (unverified)</td>
+<td>1</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>Water</td>
+<td>Lumbridge Swamp</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Earth</td>
+<td>North-east of Varrock (unverified)</td>
+<td>9</td>
+<td>6.5</td>
+</tr>
+<tr>
+<td>Fire</td>
+<td>North of Al Kharid</td>
+<td>14</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>West of Barbarian Village (unverified)</td>
+<td>20</td>
+<td>7.5</td>
+</tr>
+<tr>
+<td>Cosmic</td>
+<td>Zanaris</td>
+<td>27</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Chaos</td>
+<td>Wilderness level 9, then a portal maze</td>
+<td>35</td>
+<td>8.5</td>
+</tr>
+<tr>
+<td>Nature</td>
+<td>Karamja jungle</td>
+<td>44</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Law</td>
+<td>Entrana</td>
+<td>54</td>
+<td>9.5</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>In practice Runecraft stops at Nature.</strong> Both entering the ruins and binding at the altar need the matching talisman in your pack, and no player can get a Law, Death or Blood talisman:</p>
+<ul>
+<li>Imbuing them is commented out in the code as a TODO.</li>
+<li>No drop table, shop, quest, ground spawn or NPC gives one.</li>
+<li>Curse and Enfeeble only convert a talisman you already have.</li>
+</ul>
+<p>The <strong>Law</strong> ruins do stand on Entrana, so Law is blocked only by the missing talisman. <strong>Death and Blood</strong> are blocked twice: their ruins aren't placed anywhere in the world, so there's no entrance outside. Their altar rooms exist, but their exit portals point to 0,0, and the Death ruins' teleport is a copy of Mind's.</p>
+<p>The Water talisman's Locate points to the wrong place.</p>
+<h3>Runes per stone</h3>
+<p>This uses your <strong>current</strong> level, so potions count.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rune</th>
+<th>2 per stone at</th>
+<th>Most</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Air</td>
+<td>11</td>
+<td>10 at 99 (one more every 11 levels)</td>
+</tr>
+<tr>
+<td>Mind</td>
+<td>14</td>
+<td>8 at 98</td>
+</tr>
+<tr>
+<td>Water</td>
+<td>19</td>
+<td>6 at 95</td>
+</tr>
+<tr>
+<td>Earth</td>
+<td>26</td>
+<td>4 at 78</td>
+</tr>
+<tr>
+<td>Fire</td>
+<td>35</td>
+<td>3 at 70</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>46</td>
+<td>3 at 92</td>
+</tr>
+<tr>
+<td>Cosmic / Chaos / Nature</td>
+<td>59 / 74 / 91</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Talismans</h3>
+<ul>
+<li><strong>Uncharged:</strong> chisel a rune stone (5 Crafting XP).</li>
+<li><strong>Normal:</strong> use an uncharged talisman with 10 runes of the type. You need the altar's level. Ten runes from a shop are enough to unlock an altar. Normal talismans are reusable.</li>
+<li><strong>Cursed:</strong> cast Curse on a normal talisman. Needs the altar level +7. The bind gives <strong>2× XP</strong> with normal runes, then the talisman crumbles.</li>
+<li><strong>Enfeebled:</strong> cast Enfeeble on a normal talisman. Needs the altar level +14. The bind gives <strong>5× XP but no runes</strong>, deals 3 damage and drains 15% of your Runecraft level.</li>
+<li>If you carry several, <strong>enfeebled is used first</strong>, then cursed. A stray enfeebled talisman costs you the whole load of runes.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>Free, unlimited runes for Magic, with no Mining level needed for the stones. Cosmic, chaos and nature runes are valuable (nature feeds High Alchemy). Cursed and enfeebled talismans trade runes for faster levels. See also <a href="#potions">Runecraft potions</a>.</p></div><p class="src"><span>Source</span> custom/skills/runecraft/* · extras/ObjectRunecraft.xml · ExitPortal.java · RuneTalisman.java:76</p></article>
+<article id="harvesting" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Harvesting</h1><p class="lede">A gathering skill for fruit, vegetables, herbs and other farm produce.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_harvesting</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>169 patches across the map: fruit trees, palms, berry bushes, vegetable allotments, sugar cane, grape vines, and <strong>clip spots</strong> for herbs, seaweed, limpwurt and snape grass. Nothing is planted. You walk up to a patch and harvest it, and it depletes and regrows like a tree.</p>
+<h3>Tools</h3>
+<p>All sold by the <strong>Gardener</strong> (see below).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Used on</th>
+<th>Without it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fruit Picker</td>
+<td>trees, palms, pineapple</td>
+<td>50% chance per attempt to damage the produce</td>
+</tr>
+<tr>
+<td>Hand Shovel</td>
+<td>everything else you Harvest</td>
+<td>50% chance per attempt to damage the produce</td>
+</tr>
+<tr>
+<td>Herb Clippers</td>
+<td>herb, seaweed, limpwurt, snape grass</td>
+<td>can't clip at all</td>
+</tr>
+<tr>
+<td>Watering Can</td>
+<td>watering events (5 uses per fill)</td>
+<td>the plant is weak and that attempt fails</td>
+</tr>
+<tr>
+<td>Bucket of soil</td>
+<td>soil events (fill at a Soil Mound)</td>
+<td>the plant is weak and that attempt fails</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Care events</h3>
+<ul>
+<li>Each Harvest attempt has a 1 in 7 chance of asking for water; if not, a 1 in 5 chance of asking for soil. Having the item satisfies it and protects that patch for 3 minutes.</li>
+<li>While a patch is <strong>watered</strong>, a harvest has a 1 in 21 chance not to deplete it.</li>
+<li>While a patch has <strong>soil</strong>, a harvest has a 1 in 15 chance of an extra item.</li>
+</ul>
+<h3>Crops</h3>
+<p>XP is displayed XP; Coleslaw doubles it.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Crop</th>
+<th>Level</th>
+<th>XP</th>
+<th>Crop</th>
+<th>Level</th>
+<th>XP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Potato</td>
+<td>1</td>
+<td>18</td>
+<td>Dwellberries</td>
+<td>36</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Onion</td>
+<td>5</td>
+<td>22</td>
+<td>Grapes</td>
+<td>36</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Cabbage</td>
+<td>7</td>
+<td>24</td>
+<td>Orange</td>
+<td>39</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Garlic</td>
+<td>9</td>
+<td>26</td>
+<td>Grapefruit</td>
+<td>46</td>
+<td>36</td>
+</tr>
+<tr>
+<td>Redberries</td>
+<td>10</td>
+<td>10</td>
+<td>White pumpkin</td>
+<td>47</td>
+<td>74</td>
+</tr>
+<tr>
+<td>Tomato</td>
+<td>12</td>
+<td>28</td>
+<td>Jangerberries</td>
+<td>48</td>
+<td>38</td>
+</tr>
+<tr>
+<td>Lemon</td>
+<td>15</td>
+<td>10</td>
+<td>Sugar cane</td>
+<td>50</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Corn</td>
+<td>20</td>
+<td>38</td>
+<td>Pineapple</td>
+<td>51</td>
+<td>44</td>
+</tr>
+<tr>
+<td>Lime</td>
+<td>21</td>
+<td>14</td>
+<td>Papaya</td>
+<td>57</td>
+<td>54</td>
+</tr>
+<tr>
+<td>Cadavaberries</td>
+<td>22</td>
+<td>14</td>
+<td>White berries</td>
+<td>59</td>
+<td>58</td>
+</tr>
+<tr>
+<td>Red apple</td>
+<td>27</td>
+<td>18</td>
+<td>Coconut</td>
+<td>68</td>
+<td>84</td>
+</tr>
+<tr>
+<td>Red cabbage</td>
+<td>30</td>
+<td>52</td>
+<td>Dragonfruit</td>
+<td>81</td>
+<td>140</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>33</td>
+<td>22</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Clip spots:</strong> seaweed 23 (21 XP; 1 in 4 is edible), limpwurt 42 (36 XP), snape grass 61 (82 XP). A <strong>herb spot</strong> can be clipped at any level: each attempt picks a random herb (guam most often, dwarf weed rarest) and succeeds depending on that herb's level. XP equals the herb's identify XP.</p>
+<h3>NPCs</h3>
+<ul>
+<li><strong>Gardener:</strong> sells the tools and soil and gives tips. There are nine: Lumbridge Castle, two in Varrock, Falador, and five further east and south including Ardougne and Yanille.</li>
+<li><strong>Lily:</strong> gives the tutorial at the starter allotments north of Lumbridge, and sells the <a href="#skillcapes">Harvesting cape</a>.</li>
+</ul>
+<h3>Grapes of Saradomin and Zamorak</h3>
+<p>At Harvesting 85, wearing a monk's robe or Zamorak robe, use grapes on a <strong>Holy symbol</strong> in the Edgeville monastery vine area (blessed) or an <strong>Unholy symbol</strong> in the Zamorak monks' area (cursed). Each grape costs 1 Prayer point. Doing it in the rival faction's area spawns a hostile monk. Blessed grapes on a jug of water make <strong>Wine of Saradomin</strong> (Cooking 70), an ingredient of the <a href="#potions">Magic potion</a>.</p>
+<h3>Why it's useful</h3>
+<p>Herbs, limpwurt and snape grass without combat, which means Herblaw supplies on tap. It is also the only source of the ingredients for the new <a href="#potions">potions</a> and <a href="#cooking">foods</a>, and it trains from level 1.</p></div><p class="src"><span>Source</span> custom/skills/harvesting/Harvesting.java · extras/ObjectHarvesting.xml · Gardener.java · Lily.java · GrapeEmpowerment.java</p></article>
+<article id="wc-guild" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Woodcutting Guild</h1><p class="lede">Yews and magic trees next to a bank chest, in McGrubor&#x27;s Wood.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_woodcutting_guild</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>A fenced area in <strong>McGrubor's Wood</strong> with 4 yew trees, 2 magic trees and a bank chest.</p>
+<h3>Getting in</h3>
+<ul>
+<li>Open the gate while the <strong>Forester</strong> is nearby. He charges <strong>1,000 coins</strong>, then checks for <strong>Woodcutting 55</strong>.</li>
+<li>He takes the money before checking your level. If you're under-levelled he keeps it "as a donation".</li>
+</ul>
+<h3>The bank chest</h3>
+<p><strong>McGrubor</strong> charges <strong>1,000 gp per bank chest use</strong>. He can take the fee straight from your bank until you log out.</p>
+<h3>Why it's useful</h3>
+<p>The only place where yews and magic trees stand next to a bank.</p></div><p class="src"><span>Source</span> custom/misc/WoodcuttingGuild.java · locs/SceneryLocsWoodcuttingGuild.json</p></article>
+<article id="firemaking" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Burn any log</h1><p class="lede">Oak, willow, maple, yew and magic logs can be lit, with a fixed XP per log.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>custom_firemaking</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium only normal logs light, for 25 + 1.75 × level XP. On Coleslaw every log type lights, for a fixed XP:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Logs</th>
+<th>Level</th>
+<th>XP</th>
+<th>Fire lasts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td>1</td>
+<td>40</td>
+<td>90 s</td>
+</tr>
+<tr>
+<td>Oak</td>
+<td>15</td>
+<td>60</td>
+<td>110 s</td>
+</tr>
+<tr>
+<td>Willow</td>
+<td>30</td>
+<td>90</td>
+<td>130 s</td>
+</tr>
+<tr>
+<td>Maple</td>
+<td>45</td>
+<td>135</td>
+<td>150 s</td>
+</tr>
+<tr>
+<td>Yew</td>
+<td>60</td>
+<td>202.5</td>
+<td>170 s</td>
+</tr>
+<tr>
+<td>Magic</td>
+<td>75</td>
+<td>304</td>
+<td>190 s</td>
+</tr>
+</tbody>
+</table></div>
+<p>You light logs on the ground. You stop failing at the required level + 59. The <a href="#skillcapes">Firemaking cape</a> makes fires last 330 s.</p>
+<h3>Why it's useful</h3>
+<p>Firemaking becomes a real skill to train, and better logs give far more XP.</p></div><p class="src"><span>Source</span> extras/FiremakingDef.xml · Firemaking.java:40-49, 206</p></article>
+<article id="leather" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Leather tanning and new leather</h1><p class="lede">Tan hides yourself over a fire; craft chaps, a top and a skirt.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_custom_leather</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><ol>
+<li><strong>Animal fat:</strong> use a knife on raw beef, bear meat or rat meat. You get animal fat plus a <strong>lean</strong> meat that cooks like normal.</li>
+<li><strong>Treated hide:</strong> use animal fat (or a hammer) on a cow hide. 2.5 Crafting XP.</li>
+<li><strong>Leather:</strong> use the treated hide on a <strong>fire or fireplace</strong>. 6.25 Crafting XP. Furnaces and ranges are "too hot".</li>
+</ol>
+<p>New items appear under "More…" when you craft with a needle and thread:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Level</th>
+<th>XP</th>
+<th>Armour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leather chaps</td>
+<td>10</td>
+<td>20</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Leather top (female only)</td>
+<td>14</td>
+<td>25</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Leather skirt</td>
+<td>10</td>
+<td>20</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Why it's useful</h3>
+<p>Leather without visiting a tanner, and the leather top (armour 10) beats normal leather armour (6).</p></div><p class="src"><span>Source</span> custom/itemactions/LeatherTanning.java · Crafting.java:1377</p></article>
+<article id="cooking" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>New cooking recipes</h1><p class="lede">Seaweed soup, pumpkin pies and lean meats.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td colspan="3" class="note">(always on with the custom items)</td></tr></tbody></table></div><div class="prose"><div class="tw"><table>
+<thead>
+<tr>
+<th>Dish</th>
+<th>How</th>
+<th>Level</th>
+<th>Heals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seaweed soup</td>
+<td>Put giant carp, edible seaweed, garlic, potato and spice in a mixing bowl, pour in a bowl of water, cook</td>
+<td>80</td>
+<td>26, returns the bowl</td>
+</tr>
+<tr>
+<td>Pumpkin pie</td>
+<td>Pie shell, egg, milk and pumpkin, on a range</td>
+<td>80</td>
+<td>12 per half</td>
+</tr>
+<tr>
+<td>White pumpkin pie</td>
+<td>as above with a white pumpkin</td>
+<td>80</td>
+<td>8 per half</td>
+</tr>
+<tr>
+<td>Lean meats</td>
+<td>By-product of trimming <a href="#leather">animal fat</a></td>
+<td>1</td>
+<td>like normal meat</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dragonfruit isn't edible; a knife turns it into slices for <a href="#potions">Herblaw</a>.</p>
+<h3>Why it's useful</h3>
+<p>Seaweed soup heals 26 and gives you the bowl back, so it's one of the best foods on the server.</p></div><p class="src"><span>Source</span> custom/skills/cooking/NewCookingRecipes.java · ObjectCooking.java:310</p></article>
+<article id="potions" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>New potions and decanting</h1><p class="lede">Six new potions, and merging doses.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_decanting</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>Decanting</h3>
+<p>Use a potion on another of the same type and the doses merge into full potions, leaving empty vials. It works for most potions, but <strong>not</strong> super ranging, super magic or Runecraft potions.</p>
+<h3>New potions</h3>
+<p>All need a members world, Druidic Ritual and the Herblaw level (current level counts).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Potion</th>
+<th>Recipe</th>
+<th>Level</th>
+<th>XP</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runecraft</td>
+<td>unfinished marrentill + 10 fish oil</td>
+<td>12</td>
+<td>50</td>
+<td>+3 Runecraft</td>
+</tr>
+<tr>
+<td>Super Runecraft</td>
+<td>unfinished avantoe + 10 fish oil</td>
+<td>57</td>
+<td>125</td>
+<td>+6 Runecraft</td>
+</tr>
+<tr>
+<td>Magic</td>
+<td>unfinished dwarf weed + Wine of Saradomin</td>
+<td>76</td>
+<td>172.5</td>
+<td>Magic +3 +10%</td>
+</tr>
+<tr>
+<td>Saradomin</td>
+<td>unfinished torstol + sliced dragonfruit</td>
+<td>81</td>
+<td>180</td>
+<td>Defense +1 +20%, Hits +1 +15% (both over max); lowers Attack, Strength, Ranged and Magic by 1 +10%</td>
+</tr>
+<tr>
+<td>Super ranging</td>
+<td>full ranging potion + half coconut</td>
+<td>83</td>
+<td>182.5</td>
+<td>Ranged +5 +15%</td>
+</tr>
+<tr>
+<td>Super magic</td>
+<td>full magic potion + half coconut</td>
+<td>85</td>
+<td>185</td>
+<td>Magic +5 +15%</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Fish oil:</strong> grind fish with a pestle and mortar. Bigger fish give more (sea turtle and manta ray give 4 each).</li>
+<li><strong>Half coconut:</strong> use a machete on a coconut.</li>
+<li><strong>Wine of Saradomin:</strong> see <a href="#harvesting">Harvesting</a>.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>Super ranging and super magic are the strongest Ranged and Magic boosts on the server. The Saradomin potion is a tank potion. Runecraft potions let you use an altar or talisman before your level allows.</p></div><p class="src"><span>Source</span> CombinePotions.java · Herblaw.java:305-335, 589-657 · SaradominPotion.java · Drinkables.java:224</p></article>
+<article id="smithing-extras" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Chainmail legs and more arrow shafts</h1><p class="lede">New anvil items and better fletching from better logs.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_chain_legs</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>form_fitting_chainmail</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>more_shafts_per_better_log</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>Chainmail legs</h3>
+<p>A new anvil option, "Chain mail legs" (2 bars).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Metal</th>
+<th>Bronze</th>
+<th>Iron</th>
+<th>Steel</th>
+<th>Mithril</th>
+<th>Adamant</th>
+<th>Rune</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level</td>
+<td>9</td>
+<td>23</td>
+<td>39</td>
+<td>59</td>
+<td>79</td>
+<td>94</td>
+</tr>
+<tr>
+<td>Armour</td>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td>18</td>
+<td>26</td>
+<td>40</td>
+</tr>
+</tbody>
+</table></div>
+<p>Wayne's Chains sells bronze to adamant, and Scavvo sells rune.</p>
+<h3>Form-fitting chainmail</h3>
+<p>Chainmail bodies swap into a "top" version automatically depending on who wears them, with the same stats. There is also a new "Chain mail top" anvil option.</p>
+<h3>More arrow shafts</h3>
+<p>A knife on any log makes shafts:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Log</th>
+<th>Normal</th>
+<th>Oak</th>
+<th>Willow</th>
+<th>Maple</th>
+<th>Yew</th>
+<th>Magic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shafts</td>
+<td>10</td>
+<td>15</td>
+<td>20</td>
+<td>25</td>
+<td>30</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>1</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Why it's useful</h3>
+<p>Leg armour for chain users, and far faster shaft making from the logs you already cut.</p></div><p class="src"><span>Source</span> Smithing.java:655-690 · Equipment.java:300 · Fletching.java:376-465</p></article>
+<article id="crowns" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Crowns and enchanted crowns</h1><p class="lede">Craft gem crowns and enchant them into skilling helpers.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_better_jewelry_crafting</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>Better jewelry crafting</h3>
+<p>Using a gold bar on a furnace only lists what your moulds and gems can make, best gem first.</p>
+<h3>Crowns</h3>
+<p>Buy a <strong>crown mould</strong> from Dommik (Al Kharid) or Rommik (Rimmington).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Crown</th>
+<th>Crafting</th>
+<th>XP</th>
+<th>Enchant spell</th>
+<th>Magic</th>
+<th>Becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gold</td>
+<td>9</td>
+<td>32</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Sapphire</td>
+<td>15</td>
+<td>67.5</td>
+<td>Enchant lvl-1</td>
+<td>7</td>
+<td>Crown of dew</td>
+</tr>
+<tr>
+<td>Emerald</td>
+<td>36</td>
+<td>75</td>
+<td>lvl-2</td>
+<td>27</td>
+<td>Crown of mimicry</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>60</td>
+<td>90</td>
+<td>lvl-3</td>
+<td>49</td>
+<td>Crown of the artisan</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td>84</td>
+<td>120</td>
+<td>lvl-4</td>
+<td>57</td>
+<td>Crown of the items</td>
+</tr>
+<tr>
+<td>Dragonstone</td>
+<td>93</td>
+<td>200</td>
+<td>lvl-5</td>
+<td>68</td>
+<td>Herbalist <strong>or</strong> Occult (you choose)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>What the enchanted crowns do</h3>
+<p>Worn on the head. Each time the crown could trigger it rolls its chance, and each success uses a charge. "Check" shows the charges left.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Crown</th>
+<th>Chance</th>
+<th>Charges</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dew</td>
+<td>60%</td>
+<td>30</td>
+<td>Mined clay comes out soft. Flour taken with a pot becomes dough (keeps the pot).</td>
+</tr>
+<tr>
+<td>Mimicry</td>
+<td>30%</td>
+<td>20</td>
+<td>While you're batch-skilling, an NPC that attacks you is forced to retreat.</td>
+</tr>
+<tr>
+<td>Artisan</td>
+<td>15%</td>
+<td>15</td>
+<td>Doubles XP for one Herblaw, Crafting, Fletching, Smithing, Runecraft or Cooking action.</td>
+</tr>
+<tr>
+<td>Items</td>
+<td>8%</td>
+<td>10</td>
+<td>An extra copy of what you gathered: logs, fish, ore, gems, harvest.</td>
+</tr>
+<tr>
+<td>Herbalist</td>
+<td>4%</td>
+<td>5, free recharge from Brother Jered</td>
+<td>A herb an NPC drops for you becomes its identify XP instead.</td>
+</tr>
+<tr>
+<td>Occult</td>
+<td>4%</td>
+<td>5, recharge from the Spirit of Scorpius</td>
+<td>A bone drop becomes its burying Prayer XP instead, like a mini <a href="#bonecrusher">Bonecrusher</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dew, mimicry, artisan and items shatter when out of charges.</p>
+<h3>Why it's useful</h3>
+<p>Small, steady boosts for AFK skilling. Mimicry protects batch skillers in dangerous areas, and Items and Artisan add yield and XP.</p></div><p class="src"><span>Source</span> EnchantedCrowns.java · extras/ItemCraftingDef.xml · SpellHandler.java:816-1006 · Npc.java:398-416, 642-655</p></article>
+<article id="rings" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Skills</p><h1>Enchanted rings</h1><p class="lede">Recoil, splendor, forging, life, wealth, avarice and dwarven rings.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_equipment_tab</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>These rings need the ring slot from the <a href="#equipment-tab">equipment tab</a>. They give no combat stats; each has one effect.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ring</th>
+<th>Made by</th>
+<th>Effect</th>
+<th>Lasts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recoil</td>
+<td>Enchant lvl-1 on a sapphire ring</td>
+<td>Reflects (damage ÷ 10) + 1 of every hit back at the attacker</td>
+<td>40 damage reflected</td>
+</tr>
+<tr>
+<td>Splendor</td>
+<td>lvl-2 on an emerald ring</td>
+<td>NPC coin drops ×10 (capped at +1,000)</td>
+<td>forever</td>
+</tr>
+<tr>
+<td>Forging</td>
+<td>lvl-3 on a ruby ring</td>
+<td>Iron smelting never fails</td>
+<td>75 saves</td>
+</tr>
+<tr>
+<td>Life</td>
+<td>lvl-4 on a diamond ring</td>
+<td>At 10% HP or less, teleports you to Lumbridge. Not above Wilderness level 30 or in duels.</td>
+<td>1 use</td>
+</tr>
+<tr>
+<td>Wealth</td>
+<td>lvl-5 on a dragonstone ring</td>
+<td>Better chance at the rare drop table; re-rolls one "nothing" drop</td>
+<td>forever</td>
+</tr>
+<tr>
+<td>Avarice</td>
+<td>lvl-5 on a dragonstone ring</td>
+<td>Stackable drops, coins included, go straight into your pack</td>
+<td>forever</td>
+</tr>
+<tr>
+<td>Dwarven</td>
+<td>lvl-1 on an opal ring</td>
+<td>+3 cannonballs per bar (needs Smithing 30 and Dwarf Cannon)</td>
+<td>29 bars</td>
+</tr>
+</tbody>
+</table></div>
+<p>Opal rings are made from a gold bar, an opal and a ring mould (Crafting 30). Where opals come from on Coleslaw is unverified.</p>
+<h3>Why it's useful</h3>
+<p>Avarice is effectively auto-loot for coins, runes and arrows. Life is an emergency escape, and Wealth helps on bosses.</p></div><p class="src"><span>Source</span> ItemDurability.java · CombatEvent.java:191 · DropTable.java:155-262 · Player.java:3920 · Smelting.java:112-140, 331</p></article>
+<article id="bonecrusher" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Items &amp; drops</p><h1>Bonecrusher</h1><p class="lede">Not an auto-burier: you feed it bones by hand for half XP.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>a_bone_to_pick</code></td><td class="vc">false</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>What it does</h3>
+<p>The Bonecrusher does <strong>not</strong> bury bones for you as they drop. Nothing happens on a kill, and it has no charges.</p>
+<p>It only works when you <strong>use a bone on it</strong> from your inventory: one bone per use, with no batching. You get "You place the bones into the bonecrusher… The gods are angered by your sacrilege" and <strong>half</strong> the Prayer XP burying would give:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Bones</th>
+<th>Bury XP</th>
+<th>Crush XP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bones</td>
+<td>3.75</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>Bat bones</td>
+<td>4.5</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>Big bones</td>
+<td>12.5</td>
+<td>6.25</td>
+</tr>
+<tr>
+<td>Dragon bones</td>
+<td>60</td>
+<td>30</td>
+</tr>
+</tbody>
+</table></div>
+<p>Coleslaw's <a href="#xp-rates">2× combat rate</a> doubles both columns. Crushing doesn't trigger the Prayer cape's prayer restore.</p>
+<h3>How it's obtained</h3>
+<p>It's the reward from the 2023 Halloween event <strong>A Bone to Pick</strong>, which is <strong>off on Coleslaw</strong>. Only characters that finished the event have one, and they can get a free replacement from Professor Oddenstein. Its parts (chipped pestle and mortar, aluminium bar and cog, wooden box) are event-only too.</p>
+<h3>Why it might be useful</h3>
+<p>On Coleslaw it isn't: nobody new can get it, and burying gives twice the XP.</p>
+<h3>The real "auto-bury"</h3>
+<p>If you want bones handled on a kill, that's the <a href="#crowns">Crown of the Occult</a>. While worn, each bone drop has a <strong>4%</strong> chance to vanish and give its <strong>full</strong> burying XP straight away, using one of 5 charges. You recharge it at the Spirit of Scorpius.</p></div><p class="src"><span>Source</span> authentic/misc/Bones.java:106-174 · custom/minigames/ABoneToPick.java · Npc.java:398-414 · EnchantedCrowns.java:185-222</p></article>
+<article id="dragon-gear" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Items &amp; drops</p><h1>Dragon gear</h1><p class="lede">Dragon weapons and armour, and which pieces you can actually get.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>restrict_item_id</code></td><td class="vc">-1</td><td class="vu">1289</td></tr></tbody></table></div><div class="prose"><p>All dragon items need level 60 in Attack, Defense or Ranged. Uranium blocks every item above ID 1289, so none of them exist there.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Stats</th>
+<th>Rune for comparison</th>
+<th>How to get it on Coleslaw</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dragon 2-handed sword</td>
+<td>aim 99 / power 99</td>
+<td>70 / 70</td>
+<td>King Black Dragon drop, 1 in 4,096 (see <a href="#drop-tables">drop tables</a>)</td>
+</tr>
+<tr>
+<td>Dragon plate legs / plated skirt</td>
+<td>armour 76</td>
+<td>49</td>
+<td><a href="#combat-odyssey">Combat Odyssey</a> final reward, repeatable</td>
+</tr>
+<tr>
+<td>Dragon scale mail</td>
+<td>armour 95, needs Defense 60</td>
+<td>–</td>
+<td>Crafted, see below</td>
+</tr>
+<tr>
+<td>Dragon dagger (+poisoned)</td>
+<td>60 / 60</td>
+<td>25 / 25</td>
+<td>none found</td>
+</tr>
+<tr>
+<td>Large dragon helm</td>
+<td>armour 46</td>
+<td>30</td>
+<td>none found</td>
+</tr>
+<tr>
+<td>Dragon kiteshield</td>
+<td>armour 60</td>
+<td>46</td>
+<td>none found</td>
+</tr>
+<tr>
+<td>Dragon plate body / top</td>
+<td>armour 125</td>
+<td>80</td>
+<td>none found</td>
+</tr>
+<tr>
+<td>Dragon crossbow / longbow</td>
+<td>–</td>
+<td>–</td>
+<td>none found</td>
+</tr>
+<tr>
+<td>Dragon arrows / bolts</td>
+<td>power 50</td>
+<td>40</td>
+<td>none found</td>
+</tr>
+<tr>
+<td>Dragon woodcutting axe</td>
+<td>best axe tier</td>
+<td>–</td>
+<td>none found</td>
+</tr>
+</tbody>
+</table></div>
+<p>"None found" means no drop, shop or quest gives it; only an admin can spawn it.</p>
+<h3>Useful mechanics</h3>
+<ul>
+<li><strong>Dragonfire protection</strong> adds up: dragon body or top −15%, dragon kiteshield −60%, dragon scale mail −10%, anti-dragon shield −80%, <a href="#skillcapes">Defense cape</a> −25%.</li>
+<li>The dragon longbow fires every arrow type, and the dragon crossbow fires basic and dragon bolts. Other bows reject dragon ammo.</li>
+<li>The dragon longbow looks bugged: it's missing from the ranged-aim table, so its aim is 0.</li>
+<li>Thrander in Varrock swaps dragon body ↔ top and legs ↔ skirt.</li>
+</ul>
+<h3>Dragon scale mail</h3>
+<ol>
+<li>Finish <a href="#dwarf-rescue">Dwarf Rescue</a>.</li>
+<li>Smelt a dragon long sword (1 bar) or dragon axe (2 bars) on the <strong>Lava forge</strong> (Smithing 90).</li>
+<li>Hammer a dragon bar on the <strong>Lava anvil</strong> into 50 dragon metal chain (Smithing 90, 250 XP).</li>
+<li>Kill the King Black Dragon for <strong>scales</strong> (about 1 in 50 kills). Chisel each into 5 chipped scales (Crafting 90).</li>
+<li>Bring <strong>Wayne's Chains</strong> in Falador 500 chain, 150 chipped scales and <strong>500,000 gp</strong>. That's 10 dragon bars and 30 scales in total.</li>
+</ol>
+<h3>Why it's useful</h3>
+<p>The dragon 2h is the strongest melee weapon, and the Odyssey legs are a guaranteed upgrade over rune.</p></div><p class="src"><span>Source</span> ItemDefsCustom.json · DragonFireBreath.java:42-68 · CombatFormula.java:448-537 · WaynesChains.java:67-125 · Smelting.java:48-72</p></article>
+<article id="drop-tables" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Items &amp; drops</p><h1>Drop tables and kill tracking</h1><p class="lede">The KBD bonus table, the pity timer, drop alerts and kill counts.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_new_rare_drop_tables</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>valuable_drop_messages</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>npc_kill_counters</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>King Black Dragon bonus table</h3>
+<p>On Coleslaw only, every KBD kill also has a 1 in 31 chance to roll a bonus table:</p>
+<ul>
+<li><strong>Dragon 2-handed sword:</strong> 1 in 4,096 kills</li>
+<li><strong>King Black Dragon scale:</strong> about 1 in 50 kills (for <a href="#dragon-gear">dragon scale mail</a>)</li>
+</ul>
+<h3>Pity timer</h3>
+<p>The server counts your KBD kills since your last dragon 2h and improves the odds as the count grows:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Kills since last D2h</th>
+<th>Chance per kill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>up to 2,000</td>
+<td>1 in 4,096</td>
+</tr>
+<tr>
+<td>2,001–4,000</td>
+<td>about 1 in 813</td>
+</tr>
+<tr>
+<td>over 4,000</td>
+<td>about 1 in 31 (nearly every bonus roll)</td>
+</tr>
+</tbody>
+</table></div>
+<p>You can't see the counter in game.</p>
+<h3>Ring of Wealth</h3>
+<p><code>want_new_rare_drop_tables</code> doesn't add tables. It switches on the <a href="#rings">Ring of Wealth</a>: an empty drop is re-rolled once, and reaching a rare table shows "Your ring of wealth shines brightly!"</p>
+<h3>Valuable drop alerts</h3>
+<p>A red "Valuable drop: X" message and a live-feed entry appear for <strong>key halves</strong> and <strong>dragon square shield halves</strong> only. The ratio setting (3) can never trigger, and the D2h isn't on the list.</p>
+<h3>Kill tracking</h3>
+<ul>
+<li><strong>Kill counters:</strong> your total, last NPC and recent kills appear in the <a href="#client-hud">side overlay</a>.</li>
+<li><code>::kills</code> or <code>::kc</code> lists every NPC you've killed; <code>::kc npc_name</code> shows one.</li>
+<li>"Your X kill count is: N" after each kill, once you type <code>::togglenpckcmessages</code>.</li>
+<li><strong>Kill feed:</strong> Wilderness PvP kills are announced to everyone online. You can hide it in Settings.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>The KBD is worth farming here. Kill counts help you track long grinds like the Odyssey or the D2h.</p></div><p class="src"><span>Source</span> NpcDrops.java:1748-1778 · BadLuckMitigation.java · DropTable.java:155-322 · RegularPlayer.java:98-313 · Player.java:2234</p></article>
+<article id="ironman" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Items &amp; drops</p><h1>Ironman modes</h1><p class="lede">Ironman, Ultimate and Hardcore accounts, their armour and rules.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>character_creation_mode</code></td><td class="vc">1</td><td class="vu">0</td></tr><tr><td><code>spawn_iron_man_npcs</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On the character design screen you can pick an <strong>Ironman mode</strong> and <strong>1× XP</strong> (which turns off the <a href="#xp-rates">2× rate</a>). You can switch or upgrade freely on Tutorial Island. Once you leave, you can only downgrade, through an Ironman NPC.</p>
+<p><strong>NPCs:</strong> Ironman, Ultimate Ironman and Hardcore Ironman tutors stand in Lumbridge, and one Ironman on Tutorial Island. After the tutorial they give you a free helm, body and legs (or top and skirt) for your mode. The armour is untradeable and only wearable in that mode.</p>
+<h3>Every ironman</h3>
+<ul>
+<li>no trading, duels or <a href="#auction-house">auction house</a>, and no party invites</li>
+<li>can't pick up items other players dropped, PK loot included, except your own death pile after dying to an NPC</li>
+<li>can't buy shop stock that players sold above the base amount</li>
+<li>can't be given presents or crackers (you can open your own)</li>
+</ul>
+<h3>Ultimate ironman</h3>
+<ul>
+<li>no bank anywhere, including bank chests, Shantay's chest and Gundai</li>
+<li>no Protect Item prayer, and keeps nothing on death</li>
+<li>can swap items to and from notes by using them on a certer</li>
+</ul>
+<h3>Hardcore ironman</h3>
+<p>Any death outside Tutorial Island demotes you to a normal Ironman and is announced to the whole server.</p>
+<h3>Why it's useful</h3>
+<p>It's a self-sufficient challenge mode, and the armour marks your status.</p></div><p class="src"><span>Source</span> constants/IronmanMode.java · InterfaceOptionHandler.java:140-263 · IronMan.java · Equipment.java:747 · Player.java:2289</p></article>
+<article id="certs" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Items &amp; drops</p><h1>New certificates</h1><p class="lede">Mortimer and Randolph cert rune stones, potions and high-level fish.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_certer_bank_exchange</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>Two new certers stand in Varrock. Each certificate is 5 items.</p>
+<ul>
+<li><strong>Mortimer:</strong> rune stones, stat restore potions, cure poison potions, poison antidotes</li>
+<li><strong>Randolph:</strong> giant carp, lava eels, manta rays, sea turtles</li>
+</ul>
+<p>You can cert 5 to 25 items at a time, or cash in 1 to 5 certs.</p>
+<p><strong>Bank exchange</strong> adds two options to every certer, old and new:</p>
+<ul>
+<li><strong>All from bank:</strong> certs everything of that type in your bank, in multiples of 5.</li>
+<li><strong>All to bank:</strong> turns every cert you carry into items placed straight in your bank.</li>
+</ul>
+<p>Ultimate ironmen can't use these.</p>
+<h3>Why it's useful</h3>
+<p>Bulk food, potions and rune stones take a fifth of the space, and bank exchange saves a trip to the bank.</p></div><p class="src"><span>Source</span> custom/npcs/CustomCerter.java · Certer.java:63-300 · locs/NpcLocsOther.json</p></article>
+<article id="not-obtainable" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Items &amp; drops</p><h1>Items you can&#x27;t get</h1><p class="lede">Custom items that exist but have no source on Coleslaw.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>(various event flags)</code></td><td class="vc">false</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>Uranium blocks all of these anyway (item IDs above 1289). On Coleslaw they're defined, but no normal player can get them:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Why not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#bonecrusher">Bonecrusher</a>, aluminium bar and cog, wooden box</td>
+<td>2023 Halloween event is off</td>
+</tr>
+<tr>
+<td>Rabbit's feet, Ring of Bunny, Ring of Egg</td>
+<td>Easter event is off (earlier finishers can get lost rings back from Thessalia)</td>
+</tr>
+<tr>
+<td>Necronomicon, Ancient amulet, Boomstick</td>
+<td>2024 Halloween event is off</td>
+</tr>
+<tr>
+<td>Yoyo</td>
+<td>Only Santa gives it, and Santa isn't spawned</td>
+</tr>
+<tr>
+<td>Presents, crackers, glass of milk, Christmas clothes</td>
+<td>Only from staff-run holiday drop events</td>
+</tr>
+<tr>
+<td>Valkyrie helms, wings, CTF flags</td>
+<td>Nothing in the code gives them</td>
+</tr>
+<tr>
+<td>Most <a href="#dragon-gear">dragon gear</a></td>
+<td>No drop, shop or quest</td>
+</tr>
+<tr>
+<td>Teleport stone</td>
+<td>The code points to an item ID that doesn't exist</td>
+</tr>
+<tr>
+<td>Superchisel, Reset crystal, Fluffs</td>
+<td>Staff tools</td>
+</tr>
+<tr>
+<td>Runecraft, Quest and Max capes</td>
+<td>No seller (see <a href="#skillcapes">skillcapes</a>)</td>
+</tr>
+<tr>
+<td>Pets</td>
+<td>Off on both worlds</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Unobtanium</strong> is a placeholder, not an item. You see it when your client is too old to draw an item.</p></div><p class="src"><span>Source</span> ItemDefsCustom.json · Admins.java:936 · Item.java:144 · TeleportStone.java:12</p></article>
+<article id="auction-house" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Economy &amp; world</p><h1>Auction house</h1><p class="lede">List items for sale; buyers pay while you&#x27;re offline, and you collect at any bank.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>spawn_auction_npcs</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>Where</h3>
+<ul>
+<li><strong>4 Auctioneers</strong> in Varrock's central square.</li>
+<li><strong>17 Auction Clerks</strong>, one in almost every bank: both Varrock banks, both Falador banks, Edgeville, Draynor, Al Kharid, Seers', Catherby, both Ardougne banks, Yanille, Shilo Village, Karamja, the Gnome Stronghold, the Mage Arena and Zanaris. Clerks also offer a <strong>1,000 gp teleport</strong> to the Auctioneers in Varrock.</li>
+</ul>
+<h3>Rules</h3>
+<ul>
+<li>Total level 100 or more.</li>
+<li>No ironman accounts of any kind.</li>
+<li>Your bank PIN is asked first, if you have one.</li>
+</ul>
+<h3>Selling</h3>
+<ul>
+<li>Put up items from your inventory; they're taken when you list. Coins and untradeable items can't be sold.</li>
+<li><strong>The price is for the whole stack</strong>, not each item.</li>
+<li><strong>No listing fee</strong> (the fee code is commented out), and <strong>listings never expire</strong>.</li>
+<li>Cancelling returns what's left to your inventory, or your bank if it's full.</li>
+</ul>
+<h3>Buying</h3>
+<ul>
+<li>You can buy part of a listing. The per-item price is the stack price ÷ items left, rounded down, so the seller loses the rounding. Example: 3 items listed for 10 gp sell at 3 gp each.</li>
+<li>Coins come from your inventory. Stackables always go to your bank. Other items go to your inventory if they fit, otherwise to your bank, noted if more than one.</li>
+</ul>
+<h3>Getting paid</h3>
+<p>Sale money waits for you. Collect it at <strong>any banker</strong> ("I'd like to collect my items from auction", or right-click <strong>Collect</strong>). It goes straight into your bank. If you're online you get a "has been sold!" message.</p>
+<p>There are anti-spam limits: 3 seconds between list, buy and cancel actions, and 5 between refreshes.</p>
+<h3>Why it's useful</h3>
+<p>You can trade without finding a buyer online, for free, from almost any bank. The clerk teleport is also a cheap ride to Varrock from far-off places like Zanaris, Shilo or the Mage Arena.</p></div><p class="src"><span>Source</span> content/market/* · Auctioneers.java · locs/NpcLocsAuction.json · InterfaceOptionHandler.java:275-340</p></article>
+<article id="banking" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Economy &amp; world</p><h1>Banking upgrades</h1><p class="lede">Huge bank, presets, notes, PINs, cert deposits and quick-bank options.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_custom_banks</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_bank_presets</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_bank_notes</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_bank_pins</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_cert_deposit</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>right_click_bank</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>right_click_trade</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_drop_x</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><div class="tw"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Custom banks</strong></td>
+<td>Bank space is 1,592 slots, enough for one stack of every item in the game (Uranium: 192 on members worlds). Adds "deposit all inventory" and "deposit all equipment", and lets you rearrange bank and inventory slots.</td>
+</tr>
+<tr>
+<td><strong>Bank presets</strong></td>
+<td>Two saved loadouts of inventory plus worn gear. Loading one banks everything and withdraws the saved set. 2-second cooldown.</td>
+</tr>
+<tr>
+<td><strong>Bank notes</strong></td>
+<td>Withdraw items as stackable notes (custom client).</td>
+</tr>
+<tr>
+<td><strong>Cert deposit</strong></td>
+<td>With the cert toggle on, depositing a certificate puts the 5 real items into your bank.</td>
+</tr>
+<tr>
+<td><strong>Bank PIN</strong></td>
+<td>Set, change or delete a PIN at a banker. It's asked when you open the bank or auction house, once per login.</td>
+</tr>
+<tr>
+<td><strong>Quick bank</strong></td>
+<td>"Bank" right-click on bankers; using any item on a banker opens the bank; <code>::b</code> opens it while you stand in a bank.</td>
+</tr>
+<tr>
+<td><strong>Quick trade</strong></td>
+<td>About 40 shopkeepers get "Trade" as their first right-click option.</td>
+</tr>
+<tr>
+<td><strong>Drop X</strong></td>
+<td>Drop a chosen amount from a stack.</td>
+</tr>
+</tbody>
+</table></div>
+<p>See also <a href="#certs">certer bank exchange</a>.</p>
+<h3>Why it's useful</h3>
+<p>In practice unlimited storage, one-click gear swaps, and far less menu clicking.</p></div><p class="src"><span>Source</span> model/world/World.java:147 · BankHandler.java:65-160 · BankPreset.java · Bank.java:558 · Bankers.java:160-230 · Functions.java:959</p></article>
+<article id="clans-parties" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Economy &amp; world</p><h1>Clans and parties</h1><p class="lede">Group chat, clan tags, a 5-player party panel and loot sharing.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_clans</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_parties</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_party_xp_share</code></td><td class="vc">false</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><h3>Clans</h3>
+<ul>
+<li>Up to 200 members. Names are 2–16 characters and tags 2–5.</li>
+<li>Ranks are Leader and General, with settings for who can kick or invite and whether others can find the clan in search.</li>
+<li>Commands: <code>::c message</code> for clan chat, <code>::claninvite</code>, <code>::clanaccept</code>, <code>::clankick</code>, <code>::joinclan name</code>.</li>
+<li>Your tag shows next to your name, and under it with <a href="#client-hud">floating nametags</a>.</li>
+<li>Clans are social only. Clan points and member kill counts exist in the database, but nothing ever adds to them.</li>
+</ul>
+<h3>Parties</h3>
+<ul>
+<li>Up to 5 players. Ironmen can't join.</li>
+<li><strong>You can't attack a party member.</strong></li>
+<li>A party panel shows each member's health, combat level, skull, and whether they're fighting, dead or offline.</li>
+<li>Commands: <code>::p message</code>, <code>::partyaccept</code>, <code>::leaveparty</code>.</li>
+<li><strong>XP sharing is off</strong> on Coleslaw. The leader's <code>::shareexp</code> toggle does nothing.</li>
+<li><strong>Loot sharing</strong> (<code>::shareloot</code>, leader only) works.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>A group chat channel, safe group PvM with no accidental attacks, and shared loot.</p></div><p class="src"><span>Source</span> content/clan/* · content/party/* · Player.java:881, 1839</p></article>
+<article id="new-npcs" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Economy &amp; world</p><h1>New NPCs</h1><p class="lede">Peter Skippin, Silicius, the Brimhaven cart and other additions.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>location_data</code></td><td class="vc">2</td><td class="vu">1</td></tr></tbody></table></div><div class="prose"><p>These only appear with Coleslaw's location data.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>NPC</th>
+<th>Where</th>
+<th>What they do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Peter Skippin</strong></td>
+<td>Tutorial Island landing</td>
+<td>"I'd like to skip the tutorial": he "kills" you and you wake in Lumbridge at full health. You get <strong>no tutorial items</strong>. Hardcore ironmen must use Settings or <code>::skiptutorial</code> instead.</td>
+</tr>
+<tr>
+<td><strong>Mortimer and Randolph</strong></td>
+<td>Varrock square</td>
+<td>New <a href="#certs">certers</a>.</td>
+</tr>
+<tr>
+<td><strong>Robin Banks</strong></td>
+<td>Ardougne thieves' den (underground, via the Hazeel Cult cave)</td>
+<td>Sells the Thieving <a href="#skillcapes">skillcape</a>.</td>
+</tr>
+<tr>
+<td><strong>Forester and McGrubor</strong></td>
+<td>McGrubor's Wood</td>
+<td>Run the <a href="#wc-guild">Woodcutting Guild</a>. With the guild on, the nearby authentic Foresters also cert willow, maple and yew logs.</td>
+</tr>
+<tr>
+<td><strong>Silicius</strong></td>
+<td>Entrana vial room</td>
+<td>Dialogue only, but vials blown in that room come out <strong>noted</strong>, and each blow can make up to 6 vials depending on Crafting level.</td>
+</tr>
+<tr>
+<td><strong>Cart Driver</strong> and travel cart</td>
+<td>Brimhaven</td>
+<td>A 500 gp cart ride to Shilo Village, the reverse of the authentic Shilo → Brimhaven cart. Needs Shilo Village completed.</td>
+</tr>
+<tr>
+<td><strong>Mum</strong></td>
+<td>South of Lumbridge Castle</td>
+<td><a href="#mums-assistant">Mum's Assistant</a>.</td>
+</tr>
+<tr>
+<td><strong>Ironman tutors</strong></td>
+<td>Lumbridge and Tutorial Island</td>
+<td>See <a href="#ironman">Ironman modes</a>.</td>
+</tr>
+<tr>
+<td><strong>Gardeners and Lily</strong></td>
+<td>Around the map</td>
+<td>See <a href="#harvesting">Harvesting</a>.</td>
+</tr>
+<tr>
+<td><strong>Wizard Sedridor</strong></td>
+<td>Wizards' Tower basement</td>
+<td>See <a href="#rune-mysteries">Rune Mysteries</a>.</td>
+</tr>
+<tr>
+<td><strong>Kresh</strong></td>
+<td>Lumbridge Swamp</td>
+<td>See <a href="#peeling-the-onion">Peeling the Onion</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Defined but never spawned: Subscription Vendors, Gaia, Greatwood and the Loan Officer.</p>
+<h3>Why it's useful</h3>
+<p>The tutorial skip and the Silicius vial trick save the most time.</p></div><p class="src"><span>Source</span> locs/NpcLocsOther.json · PeterSkippin.java · Crafting.java:1242-1251 · CartDriver.java:44</p></article>
+<article id="shortcuts" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Economy &amp; world</p><h1>Shortcuts, travel and bank chests</h1><p class="lede">New agility shortcuts, a rowboat, a Wilderness tunnel and free bank chests.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>location_data</code></td><td class="vc">2</td><td class="vu">1</td></tr></tbody></table></div><div class="prose"><h3>Agility shortcuts</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Where</th>
+<th>Agility</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pipe</td>
+<td>Taverley Dungeon, blue dragon area</td>
+<td>70</td>
+<td>Both ways</td>
+</tr>
+<tr>
+<td>Rocks</td>
+<td>Entrana</td>
+<td>55</td>
+<td>Climb between the north and south sides</td>
+</tr>
+<tr>
+<td>Stepping stones</td>
+<td>River between Taverley and Catherby</td>
+<td>50</td>
+<td>90% success; a fall costs a fifth of your max HP. Never fails with the Agility cape.</td>
+</tr>
+<tr>
+<td>Handholds</td>
+<td>West wall of Falador, near the west bank</td>
+<td>40</td>
+<td>One-way, west towards Taverley; never fails</td>
+</tr>
+<tr>
+<td>Stepping stones</td>
+<td>Lava dungeon near the King Black Dragon lever (Wilderness ~41)</td>
+<td>67</td>
+<td>A fall into lava costs 21% of current HP</td>
+</tr>
+<tr>
+<td>Stepping stone</td>
+<td>River by Shilo Village, towards the Nature altar</td>
+<td>85</td>
+<td>A fall costs 20% of current HP</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Travel</h3>
+<ul>
+<li><strong>Rowboat</strong>, Lumbridge: a free one-way trip to Edgeville.</li>
+<li><strong>Tunnel</strong>, Edgeville Dungeon: pay <strong>Scot Ruth</strong> 200,000 gp once for permanent use. It goes one way to the Chaos Altar in the Wilderness (level 36).</li>
+</ul>
+<h3>Free bank chests</h3>
+<p>Members only, and not for Ultimate Ironmen.</p>
+<ul>
+<li><strong>Edgeville</strong>, next to the bank, with a permanent fire nearby</li>
+<li><strong>Crafting Guild</strong></li>
+<li><strong>Fishing Guild</strong>, next to the certers</li>
+</ul>
+<h3>Other additions</h3>
+<ul>
+<li>A <strong>Zamorak altar</strong> in Edgeville for recharging prayer.</li>
+<li><strong>Mining Guild:</strong> 3 adamantite rocks, 2 gold rocks and 1 runite rock added among the coal and mithril.</li>
+<li>A gate, ships, sacks and bushes on the Grand Tree's ground-floor map, outside the tree's walls where no player can reach them. The ships don't sail, and the gate uses the Shilo tomb handler, so it would send you to the Rashiliyia tomb. It looks like a leftover.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>Shorter walks for high-Agility players, and the bank chests and rowboat save a lot of travel.</p></div><p class="src"><span>Source</span> AgilityShortcuts.java:539-773 · RandomObjects.java:130-145 · ScotRuth.java · ShiloVillageObjects.java:125 · extras/ObjectMining.xml</p></article>
+<article id="custom-map" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Economy &amp; world</p><h1>Custom landscape</h1><p class="lede">Map edits for the altars, Death Island, an expansion forest and dungeons.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>custom_landscape</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>Coleslaw loads a custom map file. Compared with the authentic map, 7 sectors are new and 47 are changed. They match the custom content:</p>
+<ul>
+<li>the <a href="#runecraft">Runecraft</a> altar rooms and portal maze</li>
+<li><a href="#death-island">Death Island</a></li>
+<li>an "Expansion" forest west of the Gnome Stronghold, with extra trees and mushrooms</li>
+<li>Kresh's house in Lumbridge Swamp (<a href="#peeling-the-onion">Peeling the Onion</a>)</li>
+<li>the <a href="#dwarf-rescue">Dwarf Rescue</a> lava forge and Balrog dungeon under the Dwarven Mine</li>
+<li>small edits near east Varrock and around Goblin Village and the Monastery</li>
+</ul>
+<p>A decorated <strong>mod room</strong> in the Al Kharid palace (farm animals, rocks, an anvil, furnace and fishing spot) is a staff sandbox. Teleports are blocked inside for non-admins, and whether players can reach it at all is unverified.</p></div><p class="src"><span>Source</span> io/WorldLoader.java:521 · conf/server/data/Custom_Landscape.orsc · locs/*ModRoom.json</p></article>
+<article id="batching" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Batching</h1><p class="lede">One click repeats a skilling action until the batch is done.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>batch_progression</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium, like original RSC, one click is one attempt. You click a tree, swing once, get a log or "You slip and fail to hit the tree", and have to click again.</p>
+<p>With batching on, one click starts a <strong>batch</strong>: the server repeats the attempt in a loop until the batch count runs out, something interrupts you, or the resource disappears. A progress bar with a <strong>Cancel</strong> button appears on screen.</p>
+<h3>How many attempts a batch gets</h3>
+<p><strong>Gathering</strong> (woodcutting, mining, gem rocks, fishing, pickpocketing, stalls, firemaking, harvesting) scales with your <strong>base level</strong> in the skill, not your boosted or drained level:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>≤10</th>
+<th>11–19</th>
+<th>20–29</th>
+<th>30–39</th>
+<th>40–49</th>
+<th>50–59</th>
+<th>60–69</th>
+<th>70–79</th>
+<th>80–89</th>
+<th>90–95</th>
+<th>96–99</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Attempts</td>
+<td>10</td>
+<td>12</td>
+<td>14</td>
+<td>16</td>
+<td>20</td>
+<td>24</td>
+<td>32</td>
+<td>40</td>
+<td>48</td>
+<td>56</td>
+<td>64</td>
+</tr>
+</tbody>
+</table></div>
+<p>Failed attempts count. A batch of 64 is 64 swings, not 64 logs.</p>
+<p><strong>Processing</strong> is limited by what you carry:</p>
+<ul>
+<li>The number of input items: cooking, identifying herbs, spinning, burying bones, filling vessels.</li>
+<li>The smaller of two ingredient stacks: mixing potions, stringing bows, smelting ore pairs.</li>
+<li>Free inventory slots: picking flax or wheat, shearing sheep.</li>
+<li>A fixed 5: cutting arrow shafts, arrow tips and similar fletching.</li>
+<li><strong>Smithing</strong> asks you: <em>Make 1 / Make 5 / Make 10 / Make All</em>. This menu only exists when batching is on.</li>
+</ul>
+<h3>Speed</h3>
+<p>Each attempt costs the skill's own delay plus a pause in the batch loop. The pause differs by skill, and that decides whether a batch is faster or slower than clicking once per attempt (as on Uranium):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Loop pause</th>
+<th>Skills</th>
+<th>Compared with clicking</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>Mining, gem rocks, Harvesting, rune stones, shearing, sand, refilling, arrow fletching</td>
+<td>batch is faster</td>
+</tr>
+<tr>
+<td>1 tick</td>
+<td>Woodcutting, fishing, cooking, smithing, most crafting, spinning</td>
+<td>the same</td>
+</tr>
+<tr>
+<td>2 ticks</td>
+<td>Herblaw (identify, potions, grinding), pickpocketing, bow stringing, gem cutting, glass blowing, log cutting</td>
+<td>batch is slower</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Clicking during a batch</h3>
+<p>Tested on a test server with batching on:</p>
+<ul>
+<li><strong>Clicking the action again mid-batch does nothing.</strong> While a batch runs you count as busy, and the server ignores action clicks. It doesn't restart or cancel the batch.</li>
+<li><strong>A walk click is the only way to cut a batch short.</strong> You don't move; the batch just stops after the attempt in progress.</li>
+<li>A new action click is accepted on the tick after the batch's last result, so clicking as soon as you see it wastes no time.</li>
+</ul>
+<p>For the 2-tick skills, alternating <strong>action → walk → action</strong> beats letting the batch run:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Plain batch</th>
+<th>Action → walk → action</th>
+<th>Uranium, clicking every tick</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identify 20 herbs</td>
+<td>39 ticks</td>
+<td>30 ticks</td>
+<td>20 ticks</td>
+</tr>
+<tr>
+<td>Pickpocketing</td>
+<td>1 attempt per 3 ticks</td>
+<td>1 per 2 ticks</td>
+<td>1 per 2 ticks</td>
+</tr>
+</tbody>
+</table></div>
+<h3>What stops a batch</h3>
+<p>The batch ends after the current attempt when:</p>
+<ul>
+<li>you move off your tile, or click to walk anywhere</li>
+<li>you press Cancel on the progress bar</li>
+<li>you are attacked, or start combat</li>
+<li>someone sends you a trade request</li>
+<li>the resource is gone: the tree falls, the rock empties, the fishing spot depletes</li>
+<li>mining finds a gem</li>
+<li>you run out of materials to process</li>
+</ul>
+<p>A walk click while busy only cancels the batch. The walk itself is dropped, so you have to click a second time to actually move.</p>
+<p><strong>A full inventory does not stop gathering.</strong> Extra items drop to the ground with "Your Inventory is full, the X drops to the ground!"</p>
+<h3>Fatigue</h3>
+<p>On Uranium, fatigue was the natural brake on AFK skilling: at 100% you gain no XP and gathering refuses to start. Coleslaw has <a href="#fatigue">fatigue</a> turned off, so nothing but the interrupts above ends a batch. That is why Coleslaw also turns on <a href="#fishing-depletion">depleting fishing spots</a> and <a href="#mining-extended">extended mining rocks</a>.</p>
+<h3>Quirks</h3>
+<ul>
+<li>Pickpocketing in batch mode keeps the NPC marked busy for the whole batch.</li>
+<li>While the per-player "Batch Progress Bar" setting is on (the default), the <code>::b</code> bank command refuses with "Please finish what you're doing" even when no batch is running. It looks like a bug.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>Far fewer clicks and packets per resource. A player or bot sends one action and waits for the batch to end, instead of clicking every 3–4 ticks.</p></div><p class="src"><span>Source</span> Formulae.java:655 getRepeatTimes · Batch.java:34-85 · Functions.java:1082 ifinterrupted · Smithing.java:694 · Inventory.java:151</p></article>
+<article id="mining-extended" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Extended mining rocks</h1><p class="lede">A rock gives several ores before it empties.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>mining_rocks_extended</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium every ore empties the rock. That would end a <a href="#batching">batch</a> after one success.</p>
+<p>On Coleslaw a rock only empties with a chance per ore mined, so on average a rock gives about 100 ÷ chance ores:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ore</th>
+<th>Copper, tin, clay, blurite</th>
+<th>Iron</th>
+<th>Silver</th>
+<th>Coal</th>
+<th>Gold</th>
+<th>Mithril</th>
+<th>Adamantite</th>
+<th>Rune</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chance to empty</td>
+<td>9%</td>
+<td>14%</td>
+<td>17%</td>
+<td>19%</td>
+<td>24%</td>
+<td>29%</td>
+<td>49%</td>
+<td>79%</td>
+</tr>
+<tr>
+<td>Average ores</td>
+<td>~11</td>
+<td>~7</td>
+<td>~6</td>
+<td>~5</td>
+<td>~4</td>
+<td>~3.4</td>
+<td>~2</td>
+<td>~1.3</td>
+</tr>
+</tbody>
+</table></div>
+<p>Gem rocks use a fixed 39%.</p>
+<h3>Why it's useful</h3>
+<p>Batch mining actually works, and you walk between rocks far less.</p></div><p class="src"><span>Source</span> Mining.java:291 · extras/ObjectMining.xml · GemMining.java:161</p></article>
+<article id="fishing-depletion" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Depleting fishing spots</h1><p class="lede">Fishing spots occasionally turn to rock and move your batch on.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>fishing_spots_depletable</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium a fishing spot never runs out. On Coleslaw each successful catch has a small chance to turn the spot into a rock for a while, which also ends your <a href="#batching">batch</a>.</p>
+<p>Typical settings from the fishing data: 4 in 250 (1.6% per catch) with a 35-tick respawn, 1 in 250 with 70 ticks, and 2 in 250 with 17 ticks.</p>
+<h3>Why it exists</h3>
+<p>With batching on and no fatigue, a fisher could otherwise stand at one spot forever. The config comment says it outright: "Randomly replaces fishing spots with a rock to stop batched fishing forever". For a player it means moving to the next spot now and then.</p></div><p class="src"><span>Source</span> Fishing.java:33, 361-393 · extras/ObjectFishing.xml</p></article>
+<article id="fatigue" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>No fatigue</h1><p class="lede">No fatigue bar, no sleeping; beds become an XP on/off switch.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_fatigue</code></td><td class="vc">false</td><td class="vu">true</td></tr></tbody></table></div><div class="prose"><p>On Uranium every XP drop also adds fatigue: 8× the XP for non-melee skills, 5× for melee. At 100% you get "You are too tired to gain experience" and have to sleep and solve the sleepword.</p>
+<p>On Coleslaw fatigue is always 0. The fatigue line disappears from the client.</p>
+<h3>Beds and sleeping bags</h3>
+<p>Sleeping now toggles <strong>experience gain</strong>. Wake up and you get "You have DISABLED experience gain!" (or ENABLED). While XP is off, the first XP drop each login reminds you. This is how you freeze a pure's stats.</p>
+<h3>Why it's useful</h3>
+<p>No sleep breaks and no captcha, and the optional XP lock for pures or account builds.</p></div><p class="src"><span>Source</span> Player.java:1284-1299, 1788-1813 · SleepHandler.java:78-121</p></article>
+<article id="xp-rates" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>2× experience</h1><p class="lede">Double XP for combat and skills, including quest rewards.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>combat_exp_rate</code></td><td class="vc">2</td><td class="vu">1</td></tr><tr><td><code>skilling_exp_rate</code></td><td class="vc">2</td><td class="vu">1</td></tr></tbody></table></div><div class="prose"><p>Both multipliers are 2 on Coleslaw.</p>
+<ul>
+<li><strong>Combat rate</strong> covers Attack, Defense, Strength, Hits, Ranged, Prayer and Magic.</li>
+<li><strong>Skilling rate</strong> covers every other skill.</li>
+</ul>
+<p>The multiplier applies to normal XP, party-shared XP and <strong>quest reward XP</strong>. Wilderness and skull bonuses are added on top.</p>
+<p>A player who picks <strong>1× mode</strong> at character creation (Coleslaw offers this choice; see <a href="#ironman">Ironman modes</a>) gets no multiplier.</p>
+<h3>Why it's useful</h3>
+<p>Half the grind.</p></div><p class="src"><span>Source</span> Player.java:1680-1735</p></article>
+<article id="tick-speed" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Faster game tick</h1><p class="lede">430 ms ticks instead of 640 ms: the whole world runs about 1.5× faster.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>game_tick</code></td><td class="vc">430</td><td class="vu">640</td></tr></tbody></table></div><div class="prose"><p>Everything counted in ticks runs about <strong>1.49× faster in real time</strong>: walking (one tile per tick), combat rounds, skilling delays, stat restoration and the batch progress bar.</p>
+<p>Timers written in real time are converted to ticks, so they stay the same number of ticks. That covers NPC, rock and tree respawns, how long dropped items stay visible, and shop restocks.</p>
+<p>The client animates walking in 6 steps per tick instead of 4, so movement still looks smooth.</p>
+<h3>Settings that look different but do nothing</h3>
+<ul>
+<li><code>walking_tick</code> (430 vs 640) is only read when custom walking speed is on, which it isn't on either world.</li>
+<li><code>milliseconds_between_spells</code> is never read; the code reads a differently named key. The spell delay is 3 ticks on both worlds, which comes to 1.27 s on Coleslaw and 1.9 s on Uranium.</li>
+<li><code>max_ticks_until_full_walking_speed</code> (5 vs 0) does nothing, because full walking speed is 1 tile per tick on both worlds.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>The same game, faster.</p></div><p class="src"><span>Source</span> Server.java:764 · ServerConfiguration.java:39-56, 481 · ActionSender.java:803</p></article>
+<article id="npc-respawn" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Faster NPC respawn</h1><p class="lede">NPCs come back in 0.7× the ticks, about half the real time.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>npc_respawn_multiplier</code></td><td class="vc">0.7</td><td class="vu">1.0</td></tr></tbody></table></div><div class="prose"><p>Every NPC's respawn delay is multiplied by 0.7. Combined with the <a href="#tick-speed">faster tick</a>, respawns take about <strong>0.47×</strong> the real time they take on Uranium.</p>
+<h3>Why it's useful</h3>
+<p>Less waiting at shared spawns, and less competition over them.</p></div><p class="src"><span>Source</span> Npc.java:819, 840</p></article>
+<article id="npc-blocking" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>NPCs don&#x27;t block</h1><p class="lede">Walk through any NPC, and take items from under it.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>npc_blocking</code></td><td class="vc">0</td><td class="vu">2</td></tr></tbody></table></div><div class="prose"><p>On Uranium (mode 2, authentic) every <strong>aggressive</strong> NPC is a wall: guards, spiders and dragons can stand in a corridor or doorway and you can't path past them. You also can't pick up an item from their tile.</p>
+<p>On Coleslaw (mode 0) no NPC ever blocks you.</p>
+<p>The other modes exist in the code but aren't used by either world: 1 blocks you only if your level is below twice theirs plus one, 3 makes every attackable NPC block, and 4 makes every NPC block.</p>
+<h3>Why it's useful</h3>
+<p>No getting body-blocked in dungeons, and no stuck walks.</p></div><p class="src"><span>Source</span> PathValidation.java:658-690 · GroundItemTake.java:56</p></article>
+<article id="npc-retreat" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>NPCs don&#x27;t retreat</h1><p class="lede">Monsters fight to the death instead of running at low health.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>npc_dont_retreat</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium about 60 NPC types run away when their health drops below a threshold after at least 3 hits: rats, spiders, scorpions, zombies, imps, chickens, unicorns, bears, thieves, muggers, monks, hobgoblins and more.</p>
+<p>On Coleslaw no NPC retreats.</p>
+<h3>Why it's useful</h3>
+<p>No chasing fleeing monsters, and no kills or drops lost to a runaway.</p></div><p class="src"><span>Source</span> NpcBehavior.java:467 · Retreats.java · CombatEvent.java:175</p></article>
+<article id="poison-npcs" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Poisonable NPCs</h1><p class="lede">Poisoned weapons and ammo now poison monsters too.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_poison_npcs</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium poison only ever hits players. On Coleslaw each hit from these has a 1 in 50 chance to poison an NPC:</p>
+<ul>
+<li>a wielded poisoned melee weapon</li>
+<li>poisoned arrows or bolts</li>
+<li>poisoned throwing weapons</li>
+</ul>
+<p>Poison starts at strength 60 and ticks every 32 ticks for strength ÷ 10 damage, losing 2 strength each time until it drops below 10. By my arithmetic that is about 81 damage over about 830 ticks.</p>
+<h3>Why it's useful</h3>
+<p>Free extra damage on long fights, such as bosses or high-HP monsters.</p></div><p class="src"><span>Source</span> CombatEvent.java:170 · RangeUtils.java:218 · ThrowingEvent.java:208 · PoisonEvent.java</p></article>
+<article id="pvp-distance" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>Longer PvP catch range</h1><p class="lede">Melee can chase a moving player from 3 tiles instead of 2.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>max_pvp_melee_attack_distance</code></td><td class="vc">3</td><td class="vu">2 (default)</td></tr></tbody></table></div><div class="prose"><p>When you and your target are both moving, a melee attack on a player further away than this distance cancels instead of chasing. Uranium doesn't set the key, so it uses the authentic 2 tiles. Coleslaw uses 3.</p>
+<h3>Why it's useful</h3>
+<p>It's a bit more forgiving when catching a fleeing player in the Wilderness.</p></div><p class="src"><span>Source</span> AttackHandler.java:94-106</p></article>
+<article id="xp-cap" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Game rules</p><h1>XP cap</h1><p class="lede">Skills cap at 1 billion XP instead of overflowing.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_experience_cap</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>XP is clamped at the limit, which also guards against overflow. On Coleslaw the limit works out to <strong>1,000,000,000 XP per skill</strong>. The date you reach it is recorded. Uranium has no cap.</p></div><p class="src"><span>Source</span> Skills.java:209-228</p></article>
+<article id="quest-regions" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quest tweaks</p><h1>Post-quest areas stay open</h1><p class="lede">Areas that lock after a quest stay reachable.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>locked_post_quest_regions_accessible</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium these areas seal for good once you finish the quest. On Coleslaw they stay open:</p>
+<ul>
+<li><strong>Fishing Contest:</strong> Morris lets you back in ("I just want to fish around") to fish the carp spot by the pipe.</li>
+<li><strong>Watchtower:</strong> the ogre enclave cave isn't blocked, and Nightshade on the ogre guard still teleports you in.</li>
+<li><strong>Shilo Village:</strong> the hillside doorway stays revealed.</li>
+<li><strong>Underground Pass:</strong> the Zamorak temple doors still open.</li>
+<li><strong>Legends' Quest:</strong> the beam rope doesn't snap after you finish.</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>Their monsters and resources stay available after the quest.</p></div><p class="src"><span>Source</span> FishingContest.java:541-651 · WatchTowerObstacles.java:281 · ShiloVillageObjects.java:207 · UndergroundPassObstaclesMap3.java:125 · LegendsQuestGameObjects.java:211</p></article>
+<article id="quest-items" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quest tweaks</p><h1>Replace lost quest items</h1><p class="lede">Get a lost doctor&#x27;s gown, translation book or gauntlets back.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>can_retrieve_post_quest_items</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><ul>
+<li><strong>Biohazard:</strong> a new Doctor's gown from Nurse Sarah's cupboard at any stage.</li>
+<li><strong>Grand Tree:</strong> King Narnode gives a new gnome translation book.</li>
+<li><strong>Family Crest:</strong> Dimintheis replaces lost gauntlets, keeping their enchantment.</li>
+</ul>
+<p>On Uranium the book and the gown are gone for good once lost. The gauntlets only come back when you die.</p></div><p class="src"><span>Source</span> BioHazard.java:1134 · GrandTree.java:428 · FamilyCrest.java:168</p></article>
+<article id="small-quest-tweaks" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Quest tweaks</p><h1>Smaller quest shortcuts</h1><p class="lede">Wormbrain, Yohnus, the Apothecary, webs, pure water and more.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>several flags</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><div class="tw"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Coleslaw</th>
+<th>Uranium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wormbrain</strong> (Dragon Slayer)</td>
+<td>Knock on his cell and buy map piece 1 for 10,000 gp</td>
+<td>Kill him through the bars with ranged or magic</td>
+</tr>
+<tr>
+<td><strong>Yohnus</strong> (Shilo furnace)</td>
+<td>"Take from Bank Until Logout": each door click takes 20 gp from your bank, no dialogue</td>
+<td>Full dialogue and payment every time</td>
+</tr>
+<tr>
+<td><strong>Apothecary</strong> (Varrock)</td>
+<td>Empties every potion you carry, or fills every empty vial with water, for 50 gp each, returning <strong>noted</strong> vials</td>
+<td>Neither option</td>
+</tr>
+<tr>
+<td><strong>Webs</strong></td>
+<td>Left-click "Slice" with a wielded weapon or knife (staves and bows allowed), 40% per try</td>
+<td>Use an item on the web; staves and bows refused</td>
+</tr>
+<tr>
+<td><strong>Pure water</strong> (Legends' Quest)</td>
+<td>Syphoning with a cut reed still works late in and after the quest</td>
+<td>Flavour text only</td>
+</tr>
+<tr>
+<td><strong>Crystal key</strong></td>
+<td>Joining the halves gives 10 Crafting XP (20 with the 2× rate)</td>
+<td>No XP</td>
+</tr>
+<tr>
+<td><strong>Thieving chests</strong></td>
+<td>A looted chest stays visibly open for its whole respawn</td>
+<td>Flips to "looted" almost immediately</td>
+</tr>
+<tr>
+<td><strong>Cats</strong></td>
+<td>Grown cats can be stroked; West Ardougne civilians take Fluffs' kittens</td>
+<td>Only kittens can be stroked</td>
+</tr>
+<tr>
+<td><strong>Guild greetings</strong></td>
+<td>The Master Fisher and Head Wizard comment on whether you meet 68 Fishing or 66 Magic</td>
+<td>They say nothing</td>
+</tr>
+<tr>
+<td><strong>Claws of Guthix</strong></td>
+<td>Every cast gives XP</td>
+<td>Authentic bug: no XP if the target's Defense is already drained</td>
+</tr>
+<tr>
+<td><strong>Gem stall</strong></td>
+<td>160 Thieving XP</td>
+<td>16 XP (an original typo)</td>
+</tr>
+<tr>
+<td><strong>Item names</strong></td>
+<td>"Vial of Water", "Perfect gold bar", "Magic Tree", etc. Rubbing a dragonstone amulet shows its charges.</td>
+<td>Authentic ambiguous names</td>
+</tr>
+<tr>
+<td><strong>Invisible NPCs</strong></td>
+<td>Some NPCs only show when relevant, such as Biggum Flodrot for <a href="#combat-odyssey">Combat Odyssey</a></td>
+<td>Everyone is visible</td>
+</tr>
+</tbody>
+</table></div>
+<p>Flags: <code>want_barter_wormbrains</code>, <code>faster_yohnus</code>, <code>want_apothecary_qol</code>, <code>want_leftclick_webs</code>, <code>loose_shallow_water_check</code>, <code>crystal_key_gives_xp</code>, <code>looted_chests_stuck</code>, <code>want_extended_cats_behavior</code>, <code>want_missing_guild_greetings</code>, <code>want_bugged_claws_xp</code>, <code>want_corrected_skilling_xp</code>, <code>improved_item_object_names</code>, <code>want_invisible_npcs</code>.</p></div><p class="src"><span>Source</span> WormBrain.java:20 · Yohnus.java:28-124 · Apothecary.java:131-372 · CutWeb.java:50 · Thieving.java:129, 205 · SpellHandler.java:1709 · Npc.java:866</p></article>
+<article id="equipment-tab" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Interface</p><h1>Equipment tab</h1><p class="lede">Worn items leave your inventory and free up slots.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_equipment_tab</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>On Uranium worn items sit in the 30-slot inventory. On Coleslaw they move to a separate <strong>Equipment</strong> container:</p>
+<ul>
+<li>You gain up to about 11 inventory slots.</li>
+<li>There is a ring slot, which the <a href="#rings">enchanted rings</a> need.</li>
+<li>You can equip straight from the bank. The bank gets an Inventory/Equipment switch and a "deposit all equipment" button.</li>
+<li>Arrows and bolts come from the equipped ammo slot; with none equipped you can't fire.</li>
+<li>If swapping leaves no room for the item you take off: "You need more inventory space to equip that."</li>
+</ul>
+<h3>Why it's useful</h3>
+<p>More room for supplies and loot on every trip.</p></div><p class="src"><span>Source</span> Equipment.java:383-452 · CustomBankInterface.java:221 · RangeEvent.java:134-228</p></article>
+<article id="xp-display" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Interface</p><h1>XP drops, counter and totals</h1><p class="lede">Floating XP numbers, an XP tracker and total XP on the stats tab.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>experience_drops_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>experience_counter_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_exp_info</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><ul>
+<li><strong>XP drops:</strong> floating "+N Skill exp" text on every gain, and "+1 Skill level" on a level-up.</li>
+<li><strong>XP counter:</strong> an overlay set to Never, Recent (the default) or Always, in Recent, Total or Select mode. "Recent" only shows while a drop is animating.</li>
+<li><strong>Stats tab:</strong> adds "Total xp", and "Xp to next level" on hover.</li>
+</ul></div><p class="src"><span>Source</span> mudclient.java:17092, 5458, 10928 · ExperienceConfigInterface.java</p></article>
+<article id="guides" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Interface</p><h1>Skill and quest guides</h1><p class="lede">Click a skill or quest to see unlocks, requirements and rewards.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>want_skill_menus</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_quest_menus</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_quest_started_indicator</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><ul>
+<li><strong>Skill guide:</strong> clicking a skill in the Stats tab opens a table of what unlocks at each level. This is not a <a href="#batching">batching</a> menu; the smithing "Make X" menu comes from batching.</li>
+<li><strong>Quest guide:</strong> clicking a quest shows its start NPC and location, requirements, rewards and your progress.</li>
+<li><strong>Started indicator:</strong> quests you've begun show yellow, as well as red (not started) and green (done).</li>
+</ul>
+<p>On Uranium clicking either does nothing, and quests are only red or green.</p></div><p class="src"><span>Source</span> mudclient.java:10978, 11139-11160 · SkillGuideInterface · QuestGuideInterface</p></article>
+<article id="client-view" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Interface</p><h1>View settings</h1><p class="lede">Hide roofs, push back fog, stop dungeon flicker, filter ground items.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>show_roof_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>fog_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>show_underground_flicker_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>ground_item_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><p>All are entries in the client's Settings panel, saved per player:</p>
+<ul>
+<li><strong>Hide Roofs</strong> (on by default): roofs and upper floors are never drawn, and the camera doesn't zoom in when you step indoors. Uranium hides roofs only while you're inside.</li>
+<li><strong>Fog</strong> (on by default): pushes the fog much further out. The label is inverted: "Fog – On" means you see further.</li>
+<li><strong>Hide Underground Flicker</strong> (on by default): stops the torchlight camera jitter in dungeons.</li>
+<li><strong>Ground Items:</strong> Show all, Hide all, Only bones, No bones, or No ashes. Visual only.</li>
+</ul></div><p class="src"><span>Source</span> mudclient.java:4935-5240, 9727</p></article>
+<article id="client-hud" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Interface</p><h1>HUD and menus</h1><p class="lede">Overlay, inventory count, nametags, combat style menu, number keys.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>side_menu_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>inventory_count_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>show_floating_nametags</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>fightmode_selector_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>menu_combat_style_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_keyboard_shortcuts</code></td><td class="vc">2</td><td class="vu">1</td></tr><tr><td><code>hide_login_box_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><ul>
+<li><strong>Side overlay</strong> (also <code>::overlay</code>): Hits and Prayer current/max in the top left, plus <a href="#drop-tables">kill counters</a>.</li>
+<li><strong>Inventory count:</strong> "n/30" on the inventory tab. White up to 14, yellow up to 29, red when full.</li>
+<li><strong>Floating nametags:</strong> player names above heads, with their clan tag underneath.</li>
+<li><strong>Fightmode selector:</strong> show the combat-style box Never, In combat (authentic) or Always.</li>
+<li><strong>Combat style in Settings:</strong> cycle Controlled, Aggressive, Accurate, Defensive before a fight starts.</li>
+<li><strong>Keyboard shortcuts:</strong> both worlds let keys 1–9 pick a menu option. Coleslaw also prints "(1)", "(2)"… before each option.</li>
+<li><strong>Hide Login Box:</strong> skips the welcome box after login.</li>
+</ul></div><p class="src"><span>Source</span> mudclient.java:5402, 7541, 6776, 7480, 9776, 12481, 3657</p></article>
+<article id="client-misc" class="page" hidden><p class="crumb"><a href="#home">Wiki</a> / Interface</p><h1>Other client changes</h1><p class="lede">Herb names, kept-on-death preview, chat fixes, custom sprites.</p><div class="conf"><table><thead><tr><th>Setting</th><th>Coleslaw</th><th>Uranium</th></tr></thead><tbody><tr><td><code>show_unidentified_herb_names</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>items_on_death_menu</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>custom_sprites</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>fix_overhead_chat</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>auto_message_switch_toggle</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_ranged_face_player</code></td><td class="vc">true</td><td class="vu">false</td></tr><tr><td><code>want_custom_rank_display</code></td><td class="vc">true</td><td class="vu">false</td></tr></tbody></table></div><div class="prose"><ul>
+<li><strong>Herb names:</strong> "Unidentified Guam", "Unfinished Guam potion" instead of just "Herb" or "Unfinished potion".</li>
+<li><strong>Kept on death:</strong> a preview of the three most valuable items you'd keep, and what you'd lose. It ignores Protect Item and is only an estimate.</li>
+<li><strong>Custom sprites:</strong> the client loads the custom sprite pack (potion doses, distinct capes and bones, and so on). On the server this also turns on the custom King Black Dragon drop table and <a href="#smithing-extras">form-fitting chainmail</a>. It appears to lock out authentic-protocol clients (unverified).</li>
+<li><strong>Overhead chat:</strong> coloured messages keep their colour when they wrap onto more lines.</li>
+<li><strong>Auto message switch:</strong> a new game message flips chat to the All tab.</li>
+<li><strong>Ranged facing:</strong> bows and crossbows turn you towards the target (authentic always faces north-west). Visual only.</li>
+<li><strong>Rank display:</strong> staff names coloured by rank. Cosmetic.</li>
+</ul></div><p class="src"><span>Source</span> EntityHandler.java:3651 · LostOnDeathInterface.java · GraphicsController.java:72, 849 · Npc.java:390 · RangeEvent.java:105 · Group.java:54</p></article>
+  </main>
+</div>
+
+<script>
+(function(){
+  var pages = document.querySelectorAll('.page');
+  var links = document.querySelectorAll('.navgroup a');
+  function show(){
+    var id = (location.hash || '#home').slice(1);
+    var target = document.getElementById(id);
+    if (!target || !target.classList.contains('page')) { id = 'home'; target = document.getElementById('home'); }
+    pages.forEach(function(p){ p.hidden = p !== target; });
+    links.forEach(function(a){ a.classList.toggle('on', a.dataset.id === id); });
+    var mob = document.querySelector('.mobnav'); if (mob) mob.open = false;
+    document.title = id === 'home' ? 'Coleslaw Field Guide' : target.querySelector('h1').textContent + ' · Coleslaw Field Guide';
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show);
+  show();
+  var q = document.getElementById('q');
+  q.addEventListener('input', function(){
+    var t = q.value.trim().toLowerCase();
+    document.querySelectorAll('#nav .navgroup').forEach(function(g){
+      var any = false;
+      g.querySelectorAll('li').forEach(function(li){
+        var id = li.firstChild.dataset.id, art = document.getElementById(id);
+        var hit = !t || li.textContent.toLowerCase().indexOf(t) >= 0 || art.textContent.toLowerCase().indexOf(t) >= 0;
+        li.hidden = !hit; any = any || hit;
+      });
+      g.hidden = !any;
+    });
+  });
+})();
+</script>
+
+</body></html>
